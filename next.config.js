@@ -2,6 +2,7 @@
 const nextConfig = {
   env: {
     NEXT_PUBLIC_WEB3_MODAL_PROJECT_ID: '7e1086da67bb06c705e6211e82b121d0',
+    NEXT_PUBLIC_TITLE_POSTFIX: 'Local'
   },
   experimental: {
     appDir: true,
