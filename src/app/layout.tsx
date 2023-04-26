@@ -1,15 +1,12 @@
 import './globals.css';
 import clsx from 'clsx';
 import type { Metadata } from 'next';
-import { Montserrat } from 'next/font/google';
-import localFont from 'next/font/local';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 import { ClientProviders } from '@/components/ClientProviders';
 import { Sidebar } from '@/components/Sidebar';
 import { albertText, montserrat } from '@/utils/fonts';
-import { timeout } from '@/utils/timeout';
 
 export const metadata: Metadata = {
   title: `Alchemestry ${process.env.NEXT_PUBLIC_TITLE_POSTFIX}`,
