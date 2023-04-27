@@ -1,24 +1,18 @@
 import { useWeb3Modal } from '@web3modal/react';
 import clsx from 'clsx';
 import Image from 'next/image';
-import type { MouseEvent } from 'react';
 import React, { useCallback, useMemo } from 'react';
 import { BsChevronUp } from 'react-icons/bs';
 import { useAccount } from 'wagmi';
 
+import WaxIcon from '@/../public/images/wax.svg';
 import { HorseshoeIcon } from '@/components/icons/Horseshoe';
 import { useWalletSection } from '@/hooks/useWalletSection';
 import { shortenAddress } from '@/utils/shortenAddress';
 
-import WaxIcon from '@/public/images/wax.svg';
-
 export const WalletSection = () => {
   const { isOpen, onOpen, onClose } = useWalletSection();
-  const {
-    isOpen: isModalOpened,
-    open: openModal,
-    close: closeModal,
-  } = useWeb3Modal();
+  const { open: openModal } = useWeb3Modal();
   const { isConnected, address } = useAccount();
 
   const buttonText = useMemo(() => {
@@ -51,21 +45,18 @@ export const WalletSection = () => {
     [openModal],
   );
 
-  const handleClick = useCallback(
-    (e: MouseEvent<HTMLButtonElement>) => {
-      if (!isConnected) {
-        return openModal({ route: 'ConnectWallet' });
+  const handleClick = useCallback(() => {
+    if (!isConnected) {
+      return openModal({ route: 'ConnectWallet' });
+    }
+    if (isConnected) {
+      if (isOpen) {
+        onClose();
+      } else {
+        onOpen();
       }
-      if (isConnected) {
-        if (isOpen) {
-          onClose();
-        } else {
-          onOpen();
-        }
-      }
-    },
-    [isConnected, openModal, isOpen, onOpen, onClose],
-  );
+    }
+  }, [isConnected, openModal, isOpen, onOpen, onClose]);
 
   return (
     <div className="relative right-0 mt-10">

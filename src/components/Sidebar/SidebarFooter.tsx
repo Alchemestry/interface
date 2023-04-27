@@ -4,9 +4,8 @@ import Image from 'next/image';
 import type { FC, HTMLAttributes } from 'react';
 import React, { useMemo } from 'react';
 
+import SidebarIcon from '@/../public/images/sidebar.svg';
 import { SidebarSocials } from '@/components/Sidebar/SidebarSocials';
-
-import SidebarIcon from '@/public/images/sidebar.svg';
 
 interface SidebarFooterProps extends HTMLAttributes<HTMLDivElement> {
   isOpen: boolean;
