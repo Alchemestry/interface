@@ -1,7 +1,7 @@
 import { useWeb3Modal } from '@web3modal/react';
 import clsx from 'clsx';
 import Image from 'next/image';
-import React, { useCallback, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
 import { BsChevronUp } from 'react-icons/bs';
 import { useAccount } from 'wagmi';
 
@@ -17,7 +17,7 @@ export const WalletSection = () => {
 
   const buttonText = useMemo(() => {
     if (!isConnected) {
-      return <span className="mx-[40px]">Connect wallet</span>;
+      return <div className="w-[185px]">Connect wallet</div>;
     }
     if (isConnected && address) {
       return (
@@ -58,6 +58,12 @@ export const WalletSection = () => {
     }
   }, [isConnected, openModal, isOpen, onOpen, onClose]);
 
+  useEffect(() => {
+    if (!isConnected) {
+      onClose();
+    }
+  }, [isConnected, onClose]);
+
   return (
     <div className="relative right-0 mt-10">
       <div
@@ -74,7 +80,7 @@ export const WalletSection = () => {
             src={WaxIcon}
             alt="wax"
             className={clsx('absolute -bottom-[23px] right-0', {
-              hidden: !isOpen,
+              hidden: !isOpen || !isConnected,
             })}
           />
           {actions.map(({ text, onClick }) => (
@@ -83,7 +89,7 @@ export const WalletSection = () => {
               onClick={onClick}
               className={clsx(
                 'text-center text-[20px] font-bold text-ternary',
-                { hidden: !isOpen },
+                { hidden: !isOpen || !isConnected },
               )}
             >
               {text}
