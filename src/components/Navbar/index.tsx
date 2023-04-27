@@ -1,11 +1,11 @@
 'use client';
 
-import { Web3Button } from '@web3modal/react';
 import { usePathname, useRouter } from 'next/navigation';
 import React from 'react';
 
-import { HorseshoeIcon } from '@/components/icons/Horseshoe';
+import { ClientOnly } from '@/components/ClientOnly';
 import { NavHeading } from '@/components/Navbar/NavHeading';
+import { WalletSection } from '@/components/Navbar/WalletSection';
 
 type Route = 'queue' | 'random';
 
@@ -17,7 +17,7 @@ export const Navbar = () => {
 
   return (
     <nav className="flex w-full items-center justify-between">
-      <div className="flex items-start gap-2 self-start">
+      <div className="flex h-[92px] items-start gap-2 self-start">
         {routes.map((route) => (
           <NavHeading
             key={route}
@@ -28,10 +28,9 @@ export const Navbar = () => {
           </NavHeading>
         ))}
       </div>
-      <div className="flex h-[120px] items-center gap-2">
-        <Web3Button />
-        <HorseshoeIcon size={31} />
-      </div>
+      <ClientOnly>
+        <WalletSection />
+      </ClientOnly>
     </nav>
   );
 };

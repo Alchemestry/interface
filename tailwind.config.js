@@ -17,11 +17,20 @@ module.exports = {
       textColor: {
         primary: colors.primary,
         secondary: colors.secondary,
+        ternary: colors.ternary,
+      },
+      backgroundSize: {
+        100: '100% 100%',
       },
       backgroundColor: {
         primary: colors.secondary,
         secondary: colors.primary,
         contrast: colors.contrast,
+      },
+      backgroundImage: {
+        connectWallet: 'url(../../public/images/connect-wallet-bg.png)',
+        connectWalletList:
+          'url(../../public/images/connect-wallet-list-bg.png)',
       },
       fontFamily: {
         montserrat: ['var(--font-montserrat)'],
