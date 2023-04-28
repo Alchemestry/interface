@@ -68,7 +68,7 @@ export const WalletSection = () => {
     <div className="relative right-0 mt-10">
       <div
         className={clsx(
-          'absolute -left-[245px] top-0 z-0 mt-[2px] w-[225px] cursor-default bg-connectWalletList bg-100 bg-center bg-no-repeat pt-[20px] transition-all',
+          'absolute -left-[245px] top-0 z-0 mt-[2px] w-[215px] cursor-default bg-connectWalletList bg-100 bg-center bg-no-repeat pt-[20px] transition-all',
           {
             'h-0 select-none text-transparent': !isOpen,
             'h-[175px] select-text': isOpen,
