@@ -14,6 +14,10 @@ module.exports = {
         primary: colors.primary,
         contrast: colors.contrast,
       },
+      outlineColor: {
+        primary: colors.primary,
+        contrast: colors.contrast,
+      },
       textColor: {
         primary: colors.primary,
         secondary: colors.secondary,
