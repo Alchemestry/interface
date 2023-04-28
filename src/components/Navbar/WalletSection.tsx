@@ -2,7 +2,7 @@ import { useWeb3Modal } from '@web3modal/react';
 import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useCallback, useEffect, useMemo } from 'react';
-import { BsChevronUp } from 'react-icons/bs';
+import { BsChevronDown } from 'react-icons/bs';
 import { useAccount } from 'wagmi';
 
 import WaxIcon from '@/../public/images/wax.svg';
@@ -23,7 +23,7 @@ export const WalletSection = () => {
       return (
         <div className="mx-[20px] flex items-center justify-between gap-2">
           {shortenAddress(address)}{' '}
-          <BsChevronUp
+          <BsChevronDown
             size={22}
             className={clsx('transition-all', { 'rotate-180': isOpen })}
           />
@@ -68,7 +68,7 @@ export const WalletSection = () => {
     <div className="relative right-0 mt-10">
       <div
         className={clsx(
-          'absolute -left-[245px] top-0 z-0 mt-[2px] w-[225px] cursor-default bg-connectWalletList bg-100 bg-center bg-no-repeat pt-[20px] transition-all',
+          'absolute -left-[245px] top-0 z-0 mt-[2px] w-[215px] cursor-default bg-connectWalletList bg-100 bg-center bg-no-repeat pt-[20px] transition-all',
           {
             'h-0 select-none text-transparent': !isOpen,
             'h-[175px] select-text': isOpen,

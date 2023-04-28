@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 
-import { ClientProviders } from '@/components/ClientProviders';
+import { LayoutClient } from '@/components/LayoutClient';
 import { Sidebar } from '@/components/Sidebar';
 import { albertText, montserrat } from '@/utils/fonts';
 
@@ -16,20 +16,18 @@ export const metadata: Metadata = {
 const RootLayout = async ({ children }: PropsWithChildren) => {
   return (
     <html lang="en">
-      <body>
-        <ClientProviders>
-          <div
-            className={clsx(
-              'bg-primary',
-              albertText.variable,
-              montserrat.variable,
-              'flex h-full w-full flex-col font-montserrat text-primary md:flex-row',
-            )}
-          >
-            <Sidebar />
-            {children}
-          </div>
-        </ClientProviders>
+      <body className="scrollbar-none">
+        <div
+          className={clsx(
+            'bg-primary',
+            albertText.variable,
+            montserrat.variable,
+            'flex h-full min-h-full w-full flex-col font-montserrat text-primary md:flex-row',
+          )}
+        >
+          <Sidebar />
+          <LayoutClient>{children}</LayoutClient>
+        </div>
       </body>
     </html>
   );

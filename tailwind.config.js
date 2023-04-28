@@ -29,12 +29,14 @@ module.exports = {
       backgroundColor: {
         primary: colors.secondary,
         secondary: colors.primary,
+        ternary: colors.ternary,
         contrast: colors.contrast,
       },
       backgroundImage: {
         connectWallet: 'url(../../public/images/connect-wallet-bg.png)',
         connectWalletList:
           'url(../../public/images/connect-wallet-list-bg.png)',
+        faq: 'url(../../public/images/faq-page-bg.png)',
       },
       fontFamily: {
         montserrat: ['var(--font-montserrat)'],
@@ -45,5 +47,5 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [require('tailwind-scrollbar')],
 };
