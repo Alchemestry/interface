@@ -23,15 +23,15 @@ export const SidebarSocials: React.FC<SidebarSocialsProps> = ({
 }) => {
   const socials: SidebarSocialsType[] = [
     {
-      href: 'https://discord.gg',
+      href: 'https://discord.gg/NmRsg7dC',
       icon: DiscordIcon,
     },
     {
-      href: 'https://twitter.com',
+      href: 'https://twitter.com/AlchemestryDev',
       icon: TwitterIcon,
     },
     {
-      href: 'https://telegram.org',
+      href: 'https://t.me/aalchemestry',
       icon: TelegramIcon,
     },
   ];
