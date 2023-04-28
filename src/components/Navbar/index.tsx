@@ -17,7 +17,7 @@ export const Navbar = () => {
 
   return (
     <nav className="flex w-full items-center justify-between">
-      <div className="flex h-[92px] items-start gap-2 self-start">
+      <div className="flex h-[92px] items-start gap-5 self-start">
         {routes.map((route) => (
           <NavHeading
             key={route}

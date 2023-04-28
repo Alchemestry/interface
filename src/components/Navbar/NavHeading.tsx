@@ -11,17 +11,12 @@ export const NavHeading: FC<NavHeading> = ({ active, children, onClick }) => {
   return (
     <button
       className={clsx(
-        `border-[5px] border-t-0 border-primary px-[18px] text-3xl capitalize underline-offset-[5px] transition-all`,
+        `outline-t-0 px-[18px] text-3xl capitalize underline-offset-[5px] outline outline-[5px] transition-all duration-200 hover:py-[25px]`,
         {
-          'text-primary': !active,
-          'text-secondary': active,
-          'bg-primary': !active,
-          'bg-secondary': active,
-          'py-[8px]': !active,
-          'py-[25px]': active,
-          'font-bold': active,
-          'font-medium': !active,
-          underline: active,
+          'bg-primary py-[8px] font-medium text-primary outline-primary':
+            !active,
+          'clip-navbar bg-gradient-to-t from-[#F4E6B0] to-[#DEB16E] py-[25px] font-bold text-secondary underline outline-0':
+            active,
         },
       )}
       onClick={onClick}

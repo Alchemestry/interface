@@ -13,3 +13,10 @@ html {
     --w3m-color-bg-1: #0b1420 !important;
     --w3m-color-bg-2: #0b1420 !important;
 }
+
+
+@layer utilities {
+    .clip-navbar {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
+    }
+}
