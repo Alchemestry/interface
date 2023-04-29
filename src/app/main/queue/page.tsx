@@ -1,7 +1,8 @@
 import React from 'react';
+import { Progressbar } from '@/components/Progressbar';
 
 const QueuePage = async () => {
-  return <div>Queue page</div>;
+  return <Progressbar />;
 };
 
 export default QueuePage;
