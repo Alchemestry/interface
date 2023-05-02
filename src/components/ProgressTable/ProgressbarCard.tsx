@@ -4,10 +4,11 @@ import Image, { StaticImageData } from 'next/image';
 export const ProgressbarCard: FC<{
   title: string;
   image: StaticImageData;
-  currentProgressInPercent: number;
   currentAmount: number;
   maxAmount: number;
-}> = ({ title, image, currentProgressInPercent, currentAmount, maxAmount }) => {
+}> = ({ title, image, currentAmount, maxAmount }) => {
+  const currentProgressInPercent = Math.round(currentAmount / maxAmount * 100);
+
   return (
     <div className="grid auto-cols-max grid-flow-col grid-rows-3 font-bold">
       <div className="row-span-3">

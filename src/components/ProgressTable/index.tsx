@@ -13,22 +13,19 @@ export const Progressbar = () => {
         <ProgressbarCard
           title="Level 1"
           image={ProgressBarLevel1}
-          currentProgressInPercent={88}
-          currentAmount={14}
+          currentAmount={6666}
           maxAmount={8888}
         />
         <ProgressbarCard
           title="Level 2"
           image={ProgressBarLevel2}
-          currentProgressInPercent={50}
-          currentAmount={14}
+          currentAmount={4444}
           maxAmount={8888}
         />
         <ProgressbarCard
           title="Level 3"
           image={ProgressBarLevel3}
-          currentProgressInPercent={14}
-          currentAmount={14}
+          currentAmount={2000}
           maxAmount={8888}
         />
       </div>
