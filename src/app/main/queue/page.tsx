@@ -1,5 +1,5 @@
 import React from 'react';
-import { Progressbar } from '@/components/Progressbar';
+import { Progressbar } from '@/components/ProgressTable';
 
 const QueuePage = async () => {
   return <Progressbar />;
