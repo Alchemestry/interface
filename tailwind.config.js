@@ -10,6 +10,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        primary: colors.primary,
+        'primary-dark': colors.primaryDark
+      },
       borderColor: {
         primary: colors.primary,
         contrast: colors.contrast,
