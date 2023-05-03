@@ -14,12 +14,12 @@ export const ProgressTableCard: FC<ProgressTableCardProps> = ({ title, image, cu
   const currentProgressInPercent = Math.round(currentAmount / maxAmount * 100);
 
   return (
-    <div className="grid auto-cols-max grid-flow-col grid-rows-3 font-bold">
+    <div className="grid grid-flow-col grid-rows-3 font-bold">
       <div className="row-span-3">
-        <Image src={image} alt="progress bar level 1" />
+        <Image src={image} alt={title} />
       </div>
       <div className="ml-4">
-        <div className="text-2xl capitalize">{title}</div>
+        <div className="text-xl capitalize">{title}</div>
       </div>
       <div className="ml-4 self-end">
         <div className="h-3.5 w-full border border-primary bg-primary">
@@ -30,7 +30,7 @@ export const ProgressTableCard: FC<ProgressTableCardProps> = ({ title, image, cu
         </div>
       </div>
       <div className="ml-4 self-end">
-        <div className="text-xl">{currentAmount} out of {maxAmount}</div>
+        <div className="text-base">{currentAmount} out of {maxAmount}</div>
       </div>
     </div>
   );
