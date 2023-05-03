@@ -1,6 +1,9 @@
 import React from 'react';
-import { Title } from '../Title';
+
 import { ProgressbarCard } from './ProgressbarCard';
+
+import { Title } from '../Title';
+
 import ProgressBarLevel1 from '@/../public/images/progressbar-bg-level-1.png';
 import ProgressBarLevel2 from '@/../public/images/progressbar-bg-level-2.png';
 import ProgressBarLevel3 from '@/../public/images/progressbar-bg-level-3.png';

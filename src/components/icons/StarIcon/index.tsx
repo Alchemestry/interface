@@ -1,5 +1,7 @@
-import React, { SVGProps } from 'react';
+import type { SVGProps } from 'react';
+import React from 'react';
 import { IconBase } from 'react-icons';
+
 import type { BaseIconProps } from '@/types/base-icon';
 
 type StarIconProps = BaseIconProps;

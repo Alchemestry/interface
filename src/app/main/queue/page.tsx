@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Progressbar } from '@/components/ProgressTable';
 
 const QueuePage = async () => {

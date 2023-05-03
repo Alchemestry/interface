@@ -1,5 +1,7 @@
-import React, { FC } from 'react';
-import Image, { StaticImageData } from 'next/image';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
+import type { FC } from 'react';
+import React from 'react';
 
 export const ProgressbarCard: FC<{
   title: string;
