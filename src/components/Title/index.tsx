@@ -7,9 +7,8 @@ export const Title: FC<{ children: string }> = ({ children }) => {
   return (
     <div className="flex h-[48px]">
       <StarIcon size={35} />
-      <div className="relative text-3xl font-bold capitalize">
+      <div className="relative text-3xl font-bold capitalize before:absolute before:-bottom-[4px] before:h-[3px] before:w-1/2 before:bg-gradient-to-r before:from-primary before:to-primary-dark">
         {children}
-        <span className="absolute bottom-0 left-0 w-1/2 bg-gradient-to-r from-primary to-primary-dark p-[2px]"></span>
       </div>
     </div>
   );

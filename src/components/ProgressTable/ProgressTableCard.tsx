@@ -3,12 +3,14 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import React from 'react';
 
-export const ProgressbarCard: FC<{
+interface ProgressTableCardProps {
   title: string;
   image: StaticImageData;
   currentAmount: number;
   maxAmount: number;
-}> = ({ title, image, currentAmount, maxAmount }) => {
+}
+
+export const ProgressTableCard: FC<ProgressTableCardProps> = ({ title, image, currentAmount, maxAmount }) => {
   const currentProgressInPercent = Math.round(currentAmount / maxAmount * 100);
 
   return (
