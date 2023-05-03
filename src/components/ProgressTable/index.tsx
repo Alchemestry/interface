@@ -33,7 +33,7 @@ export const ProgressTable = () => {
   return (
     <>
       <Title>Progress</Title>
-      <div className="ml-9 mt-9 flex flex-wrap gap-x-9">
+      <div className="mt-9 flex flex-wrap gap-x-4">
         {progressTableCards.map(({ title, image, amount, maxAmount }) => (
           <ProgressTableCard
             key={title}
