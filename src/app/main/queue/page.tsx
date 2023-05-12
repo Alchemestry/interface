@@ -1,7 +1,9 @@
 import React from 'react';
 
+import { ProgressTable } from '@/components/ProgressTable';
+
 const QueuePage = async () => {
-  return <div>Queue page</div>;
+  return <ProgressTable />;
 };
 
 export default QueuePage;
