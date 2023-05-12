@@ -7,7 +7,7 @@ import { Navbar } from '@/components/Navbar';
 const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <ClientProviders>
-      <main className="flex h-full w-full flex-col px-5 md:px-10">
+      <main className="flex h-full w-full flex-col bg-main px-5 md:px-10">
         <Navbar />
         {children}
       </main>
