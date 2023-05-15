@@ -11,6 +11,7 @@ import { IconType } from 'react-icons';
 import { Button } from '../Button';
 import { GradientButton } from '../GradientButton';
 import { TablesIcon } from '../icons/TablesIcon';
+import { SwitchIcon } from '../icons/SwitchIcon';
 
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
@@ -52,12 +53,12 @@ const SingleInfoRow: React.FC<{
 const SwitchButton: React.FC<{
   onClick: () => void,
   text: string
-}> = () => {
-  return <GradientButton style={{ padding: '10px', maxHeight: "52px", maxWidth: '222px', }}>
+}> = ({onClick, text}) => {
+  return <GradientButton onClick={onClick} style={{ padding: '0.6rem', maxHeight: "52px", maxWidth: '222px', }}>
     <div className='flex flex-row'>
-      <TablesIcon className='pt-1' size={'1.7rem'} />
+      <SwitchIcon className='pt-1' size={'1.7rem'} />
       <div className='text-secondary text-2xl capitalize'>
-        General Info
+        {text}
       </div>
     </div>
   </GradientButton>
@@ -74,14 +75,15 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({ 
   useCallback(() => onInfoSwitch?.(currentDisplayType) ?? (() => { })(), [currentDisplayType]);
 
   useEffect(() => {
+    console.log('CHANGE');
     setCurrentDisplayInfo(isPoolType(currentDisplayType) ? poolInfo : generalInfo)
   }, [currentDisplayType])
 
   return (
-    <div className="grid grid-flow-col grid-rows-3 font-bold" style={{ maxWidth: '334px' }}>
+    <div className="grid grid-col font-bold" style={{ maxWidth: '334px' }}>
       <div className='flex flex-col'>
         <div className='flex-col align-start'>
-          <div className="mt-12 mb-5">
+          <div className="mt-12 mb-7">
             <div className="text-2xl capitalize">{
               currentDisplayType === InformationDisplayType.GENERAL
                 ? 'General'
@@ -92,7 +94,7 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({ 
           <div className='flex flex-row justify-stretch' >
             <div style={{ width: '1px', marginRight: '1.4rem' }} className='bg-secondary'></div>
             <div className='flex flex-col w-full' style={{ gap: '20px' }}>
-              <SingleInfoRow name='Tables' value={currentDisplayInfo.tables} />
+              <SingleInfoRow name='Tables' value={currentDisplayInfo.tables}/>
               <SingleInfoRow name='Spents' value={currentDisplayInfo.spents} icon={BNBIcon} />
               <SingleInfoRow name='Income' value={currentDisplayInfo.income} icon={BNBIcon} />
             </div>

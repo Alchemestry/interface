@@ -3,6 +3,7 @@ import React from 'react';
 import { Title } from '../Title';
 import { InformationSectionContent, InformationSectionContentProps } from './InformationSectionContent';
 import { Decimal } from '@/utils/Decimal';
+import { StarInCircleIcon } from '../icons/StarInCircleIcon';
 
 export const InformationSection = () => {
   const informationSectionProps = {
@@ -21,8 +22,9 @@ export const InformationSection = () => {
   return (
     <>
       <div className='flex flex-col' style={{ maxWidth: '334px' }}> 
-        <div className='flex justify-center'>
+        <div className='flex flex-row justify-around'>
           <Title >Information</Title>
+          <StarInCircleIcon size={'2.3rem'}/>
         </div>
         <InformationSectionContent
           generalInfo={informationSectionProps.generalInfo}
