@@ -12,7 +12,7 @@ export const GradientDiv: FC<GradientDivProps> = ({
   return (
     <div
       className={clsx(
-        'border-l-[5px] border-r-[5px] border-l-[#F4E6B0] border-r-[#DFB26F] bg-mainGradient bg-100_5px bg-0_0_0_100% bg-no-repeat',
+        'h-full bg-gradient-to-r from-primary to-primary-dark p-1',
         className,
       )}
       {...props}
