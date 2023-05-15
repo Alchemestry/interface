@@ -10,6 +10,11 @@ export const InformationSection = () => {
       tables: 33,
       income: Decimal.from('134').toNumber(),
       spents: Decimal.from('456.4').toNumber(),
+    },
+    poolInfo: {
+      tables: 2,
+      income: Decimal.from('1').toNumber(),
+      spents: Decimal.from('4').toNumber(),
     }
   } as InformationSectionContentProps;
 

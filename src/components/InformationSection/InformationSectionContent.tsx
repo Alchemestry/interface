@@ -49,7 +49,10 @@ const SingleInfoRow: React.FC<{
   )
 }
 
-const SwitchButton = () => {
+const SwitchButton: React.FC<{
+  onClick: () => void,
+  text: string
+}> = () => {
   return <GradientButton style={{ padding: '10px', maxHeight: "52px", maxWidth: '222px', }}>
     <div className='flex flex-row'>
       <TablesIcon className='pt-1' size={'1.7rem'} />
@@ -60,11 +63,19 @@ const SwitchButton = () => {
   </GradientButton>
 }
 
+const isPoolType = (type: InformationDisplayType) => { 
+  return type === InformationDisplayType.POOL 
+}
+
 export const InformationSectionContent: FC<InformationSectionContentProps> = ({ generalInfo, poolInfo, onInfoSwitch }) => {
-  const [currentDisplayType, setCurrentDisplayType] = useState<InformationDisplayType>(InformationDisplayType.POOL);
+  const [currentDisplayType, setCurrentDisplayType] = useState<InformationDisplayType>(InformationDisplayType.GENERAL);
   const [currentDisplayInfo, setCurrentDisplayInfo] = useState<PoolInformationData>(generalInfo);
 
   useCallback(() => onInfoSwitch?.(currentDisplayType) ?? (() => { })(), [currentDisplayType]);
+
+  useEffect(() => {
+    setCurrentDisplayInfo(isPoolType(currentDisplayType) ? poolInfo : generalInfo)
+  }, [currentDisplayType])
 
   return (
     <div className="grid grid-flow-col grid-rows-3 font-bold" style={{ maxWidth: '334px' }}>
@@ -79,8 +90,8 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({ 
             </div>
           </div>
           <div className='flex flex-row justify-stretch' >
-            <div style={{width: '1px',  marginRight: '1.4rem' }} className='bg-secondary'></div>
-            <div className='flex flex-col w-full' style={{gap:'20px'}}>
+            <div style={{ width: '1px', marginRight: '1.4rem' }} className='bg-secondary'></div>
+            <div className='flex flex-col w-full' style={{ gap: '20px' }}>
               <SingleInfoRow name='Tables' value={currentDisplayInfo.tables} />
               <SingleInfoRow name='Spents' value={currentDisplayInfo.spents} icon={BNBIcon} />
               <SingleInfoRow name='Income' value={currentDisplayInfo.income} icon={BNBIcon} />
@@ -90,7 +101,11 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({ 
         </div>
       </div>
       <div className='justify-self-end pt-6'>
-        <SwitchButton />
+        <SwitchButton 
+          text={isPoolType(currentDisplayType)? 'General Info' : 'Pool Info'}
+          onClick={() => {
+            setCurrentDisplayType(isPoolType(currentDisplayType) ? InformationDisplayType.GENERAL : InformationDisplayType.POOL)
+          }} />
       </div>
     </div>
   );
