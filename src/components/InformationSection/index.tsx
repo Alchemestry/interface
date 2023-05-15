@@ -21,7 +21,7 @@ export const InformationSection = () => {
 
   return (
     <>
-      <div className='flex flex-col' style={{ maxWidth: '334px' }}> 
+      <div className='flex flex-col w-full' style={{ maxWidth: '334px' }}> 
         <div className='flex flex-row justify-around'>
           <Title >Information</Title>
           <StarInCircleIcon size={'2.3rem'}/>
