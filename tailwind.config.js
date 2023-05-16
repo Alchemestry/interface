@@ -52,6 +52,7 @@ module.exports = {
       fontFamily: {
         montserrat: ['var(--font-montserrat)'],
         albert: ['var(--font-albert-text)'],
+        arimo: ['var(--font-arimo-text)'],
       },
       boxShadow: {
         sidebar: '-20px 0px 80px rgba(0, 0, 0, 0.7)',
