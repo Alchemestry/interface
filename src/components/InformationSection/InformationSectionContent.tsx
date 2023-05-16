@@ -3,15 +3,16 @@
 import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC } from 'react';
-import React, { useCallback, useEffect, useState } from 'react';
-import { } from "ethers"
-import { Decimal } from '@/utils/Decimal';
-import { BNBIcon } from '../icons/BNBIcon';
-import { IconType } from 'react-icons';
+import React, { useEffect, useState } from 'react';
+import type { IconType } from 'react-icons';
+
 import { Button } from '../Button';
 import { GradientButton } from '../GradientButton';
-import { TablesIcon } from '../icons/TablesIcon';
+import { BNBIcon } from '../icons/BNBIcon';
 import { SwitchIcon } from '../icons/SwitchIcon';
+import { TablesIcon } from '../icons/TablesIcon';
+
+import { Decimal } from '@/utils/Decimal';
 
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
@@ -68,11 +69,9 @@ const isPoolType = (type: InformationDisplayType) => {
   return type === InformationDisplayType.POOL 
 }
 
-export const InformationSectionContent: FC<InformationSectionContentProps> = ({ generalInfo, poolInfo, onInfoSwitch }) => {
+export const InformationSectionContent: FC<InformationSectionContentProps> = ({ generalInfo, poolInfo }) => {
   const [currentDisplayType, setCurrentDisplayType] = useState<InformationDisplayType>(InformationDisplayType.GENERAL);
   const [currentDisplayInfo, setCurrentDisplayInfo] = useState<PoolInformationData>(generalInfo);
-
-  useCallback(() => onInfoSwitch?.(currentDisplayType) ?? (() => { })(), [currentDisplayType]);
 
   useEffect(() => {
     console.log('CHANGE');

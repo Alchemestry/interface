@@ -1,9 +1,13 @@
 import React from 'react';
 
-import { Title } from '../Title';
-import { InformationSectionContent, InformationSectionContentProps } from './InformationSectionContent';
-import { Decimal } from '@/utils/Decimal';
+import type { InformationSectionContentProps } from './InformationSectionContent';
+import { InformationSectionContent } from './InformationSectionContent';
+
 import { StarInCircleIcon } from '../icons/StarInCircleIcon';
+import { Title } from '../Title';
+
+import { Decimal } from '@/utils/Decimal';
+
 
 export const InformationSection = () => {
   const informationSectionProps = {
