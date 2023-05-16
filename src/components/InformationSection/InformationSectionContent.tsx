@@ -1,16 +1,12 @@
 'use client';
 
 import type { FC } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IconType } from 'react-icons';
 
-import { Button } from '../Button';
 import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 import { SwitchIcon } from '../icons/SwitchIcon';
-import { TablesIcon } from '../icons/TablesIcon';
-
-import { Decimal } from '@/utils/Decimal';
 
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
@@ -66,20 +62,20 @@ const SwitchButton: React.FC<{
   );
 };
 
-export const InformationSectionContent: FC<InformationSectionContentProps> = ({ generalInfo, poolInfo }) => {
-  const [currentDisplayType, setCurrentDisplayType] = useState<InformationDisplayType>(InformationDisplayType.GENERAL);
-  const [currentDisplayInfo, setCurrentDisplayInfo] = useState<PoolInformationData>(generalInfo);
+const isPoolType = (type: InformationDisplayType) => {
+  return type === InformationDisplayType.POOL;
+};
 
-  const isPoolType = (type: InformationDisplayType) => {
-    return type === InformationDisplayType.POOL;
-  };
-
-  useEffect(() => {
-    console.log('CHANGE');
-    setCurrentDisplayInfo(
-      isPoolType(currentDisplayType) ? poolInfo : generalInfo,
-    );
-  }, [currentDisplayType]);
+export const InformationSectionContent: FC<InformationSectionContentProps> = ({
+  generalInfo,
+  poolInfo,
+}) => {
+  const [currentDisplayType, setCurrentDisplayType] =
+    useState<InformationDisplayType>(InformationDisplayType.GENERAL);
+  const currentDisplayInfo = useMemo(
+    () => (isPoolType(currentDisplayType) ? poolInfo : generalInfo),
+    [currentDisplayType, poolInfo, generalInfo],
+  );
 
   return (
     <div className="grid-col grid font-bold" style={{ maxWidth: '334px' }}>

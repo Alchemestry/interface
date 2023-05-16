@@ -1,11 +1,8 @@
 import clsx from 'clsx';
 import type { FC, HTMLAttributes } from 'react';
 import React from 'react';
-import { IconType } from 'react-icons';
 
-import { SunIcon } from '@/components/icons/SunIcon';
-
-export type GradientButtonProps = HTMLAttributes<HTMLButtonElement>
+export type GradientButtonProps = HTMLAttributes<HTMLButtonElement>;
 
 export const GradientButton: FC<GradientButtonProps> = ({
   className,
@@ -14,7 +11,10 @@ export const GradientButton: FC<GradientButtonProps> = ({
 }) => {
   return (
     <button
-      className='h-full bg-gradient-to-r from-primary to-primary-dark'
+      className={clsx(
+        'h-full bg-gradient-to-r from-primary to-primary-dark',
+        className,
+      )}
       {...props}
     >
       {children}

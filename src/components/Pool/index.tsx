@@ -8,15 +8,15 @@ import { PurchasedTablesSection } from '@/components/PurchasedTablesSection';
 
 const Pool = () => {
   return (
-    <div className='flex w-full flex-col mb-5 mt-20' style={{ gap: '4rem'}}>
-      <ReferralSection referralsCount={10} userReferralId='jjsdfshcuy2sdv'/>
+    <div className="mb-5 mt-20 flex w-full flex-col" style={{ gap: '4rem' }}>
+      <ReferralSection userReferralId="jjsdfshcuy2sdv" />
       <ProgressTable />
-      <div className='flex flex-wrap flex-row gap-20'>
+      <div className="flex flex-row flex-wrap gap-20">
         <PurchasedTablesSection />
         <InformationSection />
       </div>
     </div>
-  )
+  );
 };
 
 export default Pool;
