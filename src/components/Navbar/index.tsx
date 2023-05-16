@@ -1,6 +1,7 @@
 'use client';
 
 import { usePathname, useRouter } from 'next/navigation';
+import type { HTMLAttributes } from 'react';
 import React from 'react';
 
 import { ClientOnly } from '@/components/ClientOnly';
@@ -9,7 +10,7 @@ import { WalletSection } from '@/components/Navbar/WalletSection';
 
 type Route = 'queue' | 'random';
 
-export const Navbar = () => {
+export const Navbar: React.FC<HTMLAttributes<HTMLDivElement>> = () => {
   const router = useRouter();
   const pathname = usePathname();
 
