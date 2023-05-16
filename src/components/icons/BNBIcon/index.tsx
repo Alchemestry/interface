@@ -6,7 +6,7 @@ import type { BaseIconProps } from '@/types/base-icon';
 
 type BNBIconProps = BaseIconProps;
 
-export const BNBIcon: FC<BNBIconProps> = (props) => {
+export const BNBIcon = (props: BNBIconProps) => {
   return (
     <IconBase
       {...props}
