@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { GradientDiv } from '../GradientDiv';
 import { CopyIcon } from '../icons/CopyIcon';
@@ -13,10 +13,13 @@ export interface ReferralSectionProps {
 export const ReferralSection: React.FC<ReferralSectionProps> = ({
   userReferralId,
 }) => {
-  const referralUrl = useMemo(
-    () => `${window.location.origin}/?referrer=${userReferralId}`,
-    [userReferralId],
-  );
+  const [referralUrl, setReferralUrl] = useState('');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setReferralUrl(`${window.location.origin}/?referrer=${userReferralId}`);
+    }
+  }, [userReferralId]);
 
   return (
     <>

@@ -49,7 +49,7 @@ export const TablesIcon: FC<TablesIconProps> = (props) => {
       />
       <path
         stroke="#F4E6B0"
-        stroke-width=".5"
+        strokeWidth=".5"
         d="M13.3 9.98v-1M14.63 9.98v-2M15.96 9.98V8.65M17.3 9.78v-1.8M18.63 9.31v-.66M19.96 9.31V7.98M21.95 7.98v-1M23.28 8.65v-2M24.61 8.65V7.32M25.94 8.32V6.65M7.32 6.65v-1M8.65 6.65V5.32M9.98 6.65V6"
       />
     </IconBase>
