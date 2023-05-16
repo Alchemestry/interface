@@ -2,13 +2,12 @@ import React from 'react';
 
 import { PurchasedTablesCard } from './PurchasedTablesSection';
 
-import { BNBIcon } from '../icons/BNBIcon';
+import { GearIcon } from '../icons/GearIcon';
 import { Title } from '../Title';
 
 import ProgressTableCardLevel1 from '@/../public/images/progress-table-card-level-1.png';
 import ProgressTableCardLevel2 from '@/../public/images/progress-table-card-level-2.png';
 import ProgressTableCardLevel3 from '@/../public/images/progress-table-card-level-3.png';
-import { GearIcon } from '../icons/GearIcon';
 
 export const PurchasedTablesSection = () => {
   const progressTableCards = [
