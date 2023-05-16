@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { ProgressTable } from '@/components/ProgressTable';
 import { InformationSection } from '@/components/InformationSection';
+import { ProgressTable } from '@/components/ProgressTable';
 
 const QueuePage = async () => {
   return (

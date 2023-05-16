@@ -1,6 +1,7 @@
+import { BigNumber } from "@ethersproject/bignumber";
+
 import assert from "assert";
 
-import { BigNumber } from "@ethersproject/bignumber";
 
 const getDigits = (numDigits: number) => TEN.pow(numDigits);
 
