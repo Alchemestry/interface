@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import type { FC } from 'react';
 import { IconBase } from 'react-icons';
 
 import type { BaseIconProps } from '@/types/base-icon';

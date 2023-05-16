@@ -6,7 +6,7 @@ import React from 'react';
 
 import { LayoutClient } from '@/components/LayoutClient';
 import { Sidebar } from '@/components/Sidebar';
-import { albertText, montserrat } from '@/utils/fonts';
+import { albertText, montserrat, arimo } from '@/utils/fonts';
 
 export const metadata: Metadata = {
   title: `Alchemestry ${process.env.NEXT_PUBLIC_TITLE_POSTFIX}`,
@@ -22,6 +22,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
             'bg-primary',
             albertText.variable,
             montserrat.variable,
+            arimo.variable,
             'flex h-full min-h-full w-full flex-col font-montserrat text-primary md:flex-row',
           )}
         >

@@ -4,25 +4,24 @@ import { IconBase } from 'react-icons';
 
 import type { BaseIconProps } from '@/types/base-icon';
 
-type SwitchIconProps = BaseIconProps;
+type CopyIconProps = BaseIconProps;
 
-export const SwitchIcon: FC<SwitchIconProps> = (props) => {
+export const CopyIcon: FC<CopyIconProps> = (props) => {
   return (
     <IconBase
       {...props}
       className={clsx('text-primary', props.className)}
-      viewBox="0 0 22 24"
+      viewBox="0 0 18 20"
       fill="none"
     >
-      <path
-        d="M5.5 2V22M5.5 2L1 6.5M5.5 2L10 6.5"
+      <path d="M12 4.5V1H1V16H6.5" stroke="#0D1826" stroke-width="2" />
+      <rect
+        x="6"
+        y="4"
+        width="11"
+        height="15"
         stroke="#0D1826"
-        strokeWidth="2"
-      />
-      <path
-        d="M16.5 22V2M16.5 22L12 17.5M16.5 22L21 17.5"
-        stroke="#0D1826"
-        strokeWidth="2"
+        stroke-width="2"
       />
     </IconBase>
   );

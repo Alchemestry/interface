@@ -1,16 +1,12 @@
 'use client';
 
 import type { FC } from 'react';
-import React, { useEffect, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import type { IconType } from 'react-icons';
 
-import { Button } from '../Button';
 import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 import { SwitchIcon } from '../icons/SwitchIcon';
-import { TablesIcon } from '../icons/TablesIcon';
-
-import { Decimal } from '@/utils/Decimal';
 
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
@@ -56,7 +52,7 @@ const SwitchButton: React.FC<{
   return (
     <GradientButton
       onClick={onClick}
-      style={{ padding: '0.6rem', maxHeight: '52px', maxWidth: '222px' }}
+      className="max-h-[52px] max-w-[22px] p-[0.6rem]"
     >
       <div className="flex flex-row">
         <SwitchIcon className="pt-1" size={'1.7rem'} />
@@ -66,23 +62,23 @@ const SwitchButton: React.FC<{
   );
 };
 
-export const InformationSectionContent: FC<InformationSectionContentProps> = ({ generalInfo, poolInfo }) => {
-  const [currentDisplayType, setCurrentDisplayType] = useState<InformationDisplayType>(InformationDisplayType.GENERAL);
-  const [currentDisplayInfo, setCurrentDisplayInfo] = useState<PoolInformationData>(generalInfo);
+const isPoolType = (type: InformationDisplayType) => {
+  return type === InformationDisplayType.POOL;
+};
 
-  const isPoolType = (type: InformationDisplayType) => {
-    return type === InformationDisplayType.POOL;
-  };
-
-  useEffect(() => {
-    console.log('CHANGE');
-    setCurrentDisplayInfo(
-      isPoolType(currentDisplayType) ? poolInfo : generalInfo,
-    );
-  }, [currentDisplayType]);
+export const InformationSectionContent: FC<InformationSectionContentProps> = ({
+  generalInfo,
+  poolInfo,
+}) => {
+  const [currentDisplayType, setCurrentDisplayType] =
+    useState<InformationDisplayType>(InformationDisplayType.GENERAL);
+  const currentDisplayInfo = useMemo(
+    () => (isPoolType(currentDisplayType) ? poolInfo : generalInfo),
+    [currentDisplayType, poolInfo, generalInfo],
+  );
 
   return (
-    <div className="grid-col grid font-bold" style={{ maxWidth: '334px' }}>
+    <div className="grid-col grid max-w-[334px] font-bold">
       <div className="flex flex-col">
         <div className="align-start flex-col">
           <div className="mb-7 mt-12">
@@ -93,11 +89,8 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({ 
             </div>
           </div>
           <div className="flex flex-row justify-stretch">
-            <div
-              style={{ width: '1px', marginRight: '1.4rem' }}
-              className="bg-secondary"
-            ></div>
-            <div className="flex w-full flex-col" style={{ gap: '20px' }}>
+            <div className="mr-[1.4rem] w-[1px] bg-secondary"></div>
+            <div className="flex w-full flex-col gap-[20px]">
               <SingleInfoRow name="Tables" value={currentDisplayInfo.tables} />
               <SingleInfoRow
                 name="Spents"

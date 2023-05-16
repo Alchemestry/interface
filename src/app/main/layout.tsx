@@ -7,8 +7,8 @@ import { Navbar } from '@/components/Navbar';
 const MainLayout = ({ children }: PropsWithChildren) => {
   return (
     <ClientProviders>
-      <main className="overflow-auto top-0 left-0 flex w-full flex-col bg-main px-5 md:px-10 h-full">
-        <Navbar />
+      <main className="left-0 top-0 flex h-full w-full flex-col overflow-auto bg-main px-10 lg:pl-24">
+        <Navbar className="" />
         {children}
       </main>
     </ClientProviders>

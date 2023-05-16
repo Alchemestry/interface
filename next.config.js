@@ -2,7 +2,7 @@
 const nextConfig = {
   experimental: {
     typedRoutes: true,
-    appDir: true
+    appDir: true,
   },
   async redirects() {
     return [

@@ -8,7 +8,6 @@ import { Title } from '../Title';
 
 import { Decimal } from '@/utils/Decimal';
 
-
 export const InformationSection = () => {
   const informationSectionProps = {
     generalInfo: {
@@ -20,15 +19,15 @@ export const InformationSection = () => {
       tables: 2,
       income: Decimal.from('1').toNumber(),
       spents: Decimal.from('4').toNumber(),
-    }
+    },
   } as InformationSectionContentProps;
 
   return (
     <>
-      <div className='flex flex-col w-full' style={{ maxWidth: '334px' }}> 
-        <div className='flex flex-row justify-around'>
-          <Title >Information</Title>
-          <StarInCircleIcon size={'2.3rem'}/>
+      <div className="flex w-full max-w-[334px] flex-col">
+        <div className="flex flex-row justify-around">
+          <Title>Information</Title>
+          <StarInCircleIcon size={'2.3rem'} />
         </div>
         <InformationSectionContent
           generalInfo={informationSectionProps.generalInfo}
