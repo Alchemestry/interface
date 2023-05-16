@@ -8,7 +8,7 @@ import { PurchasedTablesSection } from '@/components/PurchasedTablesSection';
 
 const Pool = () => {
   return (
-    <div className="mb-5 mt-20 flex w-full flex-col" style={{ gap: '4rem' }}>
+    <div className="mb-5 mt-20 flex w-full flex-col gap-[4rem]">
       <ReferralSection userReferralId="jjsdfshcuy2sdv" />
       <ProgressTable />
       <div className="flex flex-row flex-wrap gap-20">
