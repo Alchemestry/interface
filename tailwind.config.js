@@ -12,7 +12,7 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.primary,
-        'primary-dark': colors.primaryDark
+        'primary-dark': colors.primaryDark,
       },
       borderColor: {
         primary: colors.primary,

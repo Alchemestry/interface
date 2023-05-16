@@ -10,8 +10,15 @@ interface ProgressTableCardProps {
   maxAmount: number;
 }
 
-export const ProgressTableCard: FC<ProgressTableCardProps> = ({ title, image, currentAmount, maxAmount }) => {
-  const currentProgressInPercent = Math.round(currentAmount / maxAmount * 100);
+export const ProgressTableCard: FC<ProgressTableCardProps> = ({
+  title,
+  image,
+  currentAmount,
+  maxAmount,
+}) => {
+  const currentProgressInPercent = Math.round(
+    (currentAmount / maxAmount) * 100,
+  );
 
   return (
     <div className="grid grid-flow-col grid-rows-3 font-bold">
@@ -30,7 +37,9 @@ export const ProgressTableCard: FC<ProgressTableCardProps> = ({ title, image, cu
         </div>
       </div>
       <div className="ml-4 self-end">
-        <div className="text-base">{currentAmount} out of {maxAmount}</div>
+        <div className="text-base">
+          {currentAmount} out of {maxAmount}
+        </div>
       </div>
     </div>
   );

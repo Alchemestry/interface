@@ -3,9 +3,11 @@ import React from 'react';
 import Pool from '@/components/Pool';
 
 const RandomPage = () => {
-  return (<>
-    <Pool/>
-  </>)
+  return (
+    <>
+      <Pool />
+    </>
+  );
 };
 
 export default RandomPage;
