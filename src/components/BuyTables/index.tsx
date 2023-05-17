@@ -13,17 +13,23 @@ export const BuyTables = () => {
     {
       levelMark: 'lvl 1',
       image: BuyTableCardLevel1,
-      price: 0.15
+      price: 0.15,
+      minTableAmount: 3,
+      maxTableAmount: 15,
     },
     {
       levelMark: 'lvl 2',
       image: BuyTableCardLevel2,
-      price: 0.30
+      price: 0.3,
+      minTableAmount: 2,
+      maxTableAmount: 10,
     },
     {
       levelMark: 'lvl 3',
       image: BuyTableCardLevel3,
-      price: 0.50
+      price: 0.5,
+      minTableAmount: 1,
+      maxTableAmount: 5,
     },
   ];
 
@@ -31,9 +37,18 @@ export const BuyTables = () => {
     <div className="mt-16">
       <Title icon={<WaveIcon />}>Buy tables</Title>
       <div className="ml-9 mt-9 flex flex-wrap gap-x-9 gap-y-9">
-        {buyTableCards.map(({ levelMark, image, price }) => (
-          <BuyTableCard key={levelMark} levelMark={levelMark} image={image} price={price} />
-        ))}
+        {buyTableCards.map(
+          ({ levelMark, image, price, minTableAmount, maxTableAmount }) => (
+            <BuyTableCard
+              key={levelMark}
+              levelMark={levelMark}
+              image={image}
+              price={price}
+              minTableAmount={minTableAmount}
+              maxTableAmount={maxTableAmount}
+            />
+          ),
+        )}
       </div>
     </div>
   );

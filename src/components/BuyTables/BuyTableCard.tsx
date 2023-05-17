@@ -1,19 +1,41 @@
-import React from 'react';
+'use client';
+import React, { useState } from 'react';
 import type { FC } from 'react';
 import Image, { StaticImageData } from 'next/image';
 import { BNBIcon } from '../icons/BNBIcon';
+import clsx from 'clsx';
 
 interface BuyTableCardProps {
   levelMark: string;
   image: StaticImageData;
   price: number;
+  minTableAmount: number;
+  maxTableAmount: number;
 }
 
 export const BuyTableCard: FC<BuyTableCardProps> = ({
   levelMark,
   image,
   price,
+  minTableAmount,
+  maxTableAmount,
 }) => {
+  const [tableSelectionAmount, setTableSelectionAmount] =
+    useState<number>(minTableAmount);
+
+  const decrementTableSelectionAmount = () =>
+    tableSelectionAmount <= minTableAmount
+      ? minTableAmount
+      : tableSelectionAmount - 1;
+
+  const incrementTableSelectionAmount = () =>
+    tableSelectionAmount >= maxTableAmount
+      ? maxTableAmount
+      : tableSelectionAmount + 1;
+
+  const isTableAllowAmount = (amount: number) =>
+    tableSelectionAmount == amount ? 'text-secondary/40' : '';
+
   return (
     <div className="flex select-none flex-wrap font-bold text-secondary">
       <div className="bg-gradient-to-r from-primary to-primary-dark">
@@ -27,26 +49,53 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <Image src={image} alt={levelMark} width={228} />
           </div>
-          <div className="flex h-[89px] items-center justify-center text-5xl hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark">
+          <div
+            className="flex h-[89px] items-center justify-center text-5xl hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark"
+            onClick={(_) => alert('What do you want Bro ?')}
+          >
             BUY
           </div>
         </div>
         <div className="px-3 shadow-[inset_0px_2px_5px_rgba(0,0,0,0.25)]">
           <div className="flex h-[42px] items-center justify-between text-secondary/40 hover:text-secondary/100">
             <div>
-              <button>min</button>
+              <button
+                onClick={() => setTableSelectionAmount(minTableAmount)}
+                className={isTableAllowAmount(minTableAmount)}
+              >
+                min
+              </button>
             </div>
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
-                <button>-</button>
+                <button
+                  onClick={() =>
+                    setTableSelectionAmount(decrementTableSelectionAmount)
+                  }
+                  className={isTableAllowAmount(minTableAmount)}
+                >
+                  -
+                </button>
               </div>
-              <div className="text-secondary/100">10</div>
+              <div className="text-secondary/100">{tableSelectionAmount}</div>
               <div>
-                <button>+</button>
+                <button
+                  onClick={() =>
+                    setTableSelectionAmount(incrementTableSelectionAmount)
+                  }
+                  className={isTableAllowAmount(maxTableAmount)}
+                >
+                  +
+                </button>
               </div>
             </div>
             <div>
-              <button>max</button>
+              <button
+                onClick={() => setTableSelectionAmount(maxTableAmount)}
+                className={isTableAllowAmount(maxTableAmount)}
+              >
+                max
+              </button>
             </div>
           </div>
         </div>
