@@ -20,4 +20,7 @@ html {
     .clip-navbar {
         clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
     }
+    .break-word {
+        word-spacing: 100vw;
+    }
 }
