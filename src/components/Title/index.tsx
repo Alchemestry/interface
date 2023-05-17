@@ -2,7 +2,7 @@ import type { FC, ReactElement } from 'react';
 import React from 'react';
 
 import { StarIcon } from '@/components/icons/StarIcon';
-import { BaseIconProps } from '@/types/base-icon';
+import type { BaseIconProps } from '@/types/base-icon';
 
 interface TitleProps {
   children: string;

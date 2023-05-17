@@ -1,9 +1,11 @@
 'use client';
+import type { StaticImageData } from 'next/image';
+import Image from 'next/image';
 import React, { useState } from 'react';
 import type { FC } from 'react';
-import Image, { StaticImageData } from 'next/image';
+
 import { BNBIcon } from '../icons/BNBIcon';
-import clsx from 'clsx';
+
 
 interface BuyTableCardProps {
   levelMark: string;
@@ -51,7 +53,7 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
           </div>
           <div
             className="flex h-[89px] items-center justify-center text-5xl hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark"
-            onClick={(_) => alert('What do you want Bro ?')}
+            onClick={() => alert('What do you want Bro ?')}
           >
             BUY
           </div>

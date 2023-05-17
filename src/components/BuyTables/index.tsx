@@ -1,8 +1,9 @@
 import React from 'react';
 
-import { Title } from '../Title';
-import { WaveIcon } from '../icons/WaveIcon';
 import { BuyTableCard } from './BuyTableCard';
+
+import { WaveIcon } from '../icons/WaveIcon';
+import { Title } from '../Title';
 
 import BuyTableCardLevel1 from '@/../public/images/buy-table-card-level-1.png';
 import BuyTableCardLevel2 from '@/../public/images/buy-table-card-level-2.png';

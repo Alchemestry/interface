@@ -1,7 +1,7 @@
-import { BaseIconProps } from '@/types/base-icon';
-import clsx from 'clsx';
 import React from 'react';
 import { IconBase } from 'react-icons';
+
+import type { BaseIconProps } from '@/types/base-icon';
 
 type WaveIconProps = BaseIconProps;
 
