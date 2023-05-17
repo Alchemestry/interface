@@ -9,3 +9,8 @@ export const albertText = localFont({
   src: '../../public/fonts/AlbertTextBold.otf',
   variable: '--font-albert-text',
 });
+
+export const arimo = localFont({
+  src: '../../public/fonts/ArimoTextBold.ttf',
+  variable: '--font-arimo-text',
+});

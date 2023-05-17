@@ -24,12 +24,7 @@ export const StarIcon = ({ ...props }: StarIconProps) => {
 
   return (
     <>
-      <IconBase
-        {...props}
-        fill="none"
-        stroke="#FFF9C7"
-        strokeWidth="1"
-      >
+      <IconBase {...props} fill="none" stroke="#FFF9C7" strokeWidth="1">
         {stars.map((value, index) => (
           <path key={index} {...value} />
         ))}
