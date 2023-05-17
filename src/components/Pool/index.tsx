@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { BuyTables } from '../BuyTables';
 import { ReferralSection } from '../ReferralsSection';
 
 import { InformationSection } from '@/components/InformationSection';
@@ -11,6 +12,7 @@ const Pool = () => {
     <div className="mb-5 mt-20 flex w-full flex-col gap-[4rem]">
       <ReferralSection userReferralId="jjsdfshcuy2sdv" />
       <ProgressTable />
+      <BuyTables />
       <div className="flex flex-row flex-wrap gap-20">
         <PurchasedTablesSection />
         <InformationSection />
