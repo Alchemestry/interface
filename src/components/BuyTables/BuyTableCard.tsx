@@ -6,7 +6,6 @@ import type { FC } from 'react';
 
 import { BNBIcon } from '../icons/BNBIcon';
 
-
 interface BuyTableCardProps {
   levelMark: string;
   image: StaticImageData;
