@@ -35,8 +35,7 @@ export const PurchasedTablesSection = () => {
     <>
       <div>
         <div className="flex flex-row items-center">
-          <Title>Purchased Tables</Title>
-          <GearIcon className="mb-2 ml-5" size={'1.7rem'} />
+          <Title icon={<GearIcon size={'35'} />}>Purchased Tables</Title>
         </div>
         <div className="ml-9 mt-9 flex flex-wrap gap-x-9 gap-y-9">
           {progressTableCards.map(({ title, image, amount, price }) => (
