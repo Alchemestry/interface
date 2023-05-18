@@ -40,7 +40,7 @@ export const PurchasedTablesCard: FC<PurchasedTablesCardProps> = ({
       </div>
       <div className="row-span-1 flex items-center text-center text-xl text-secondary">
         <div>{price}</div>
-        <div className='ml-2.5'>
+        <div className="ml-2.5">
           <BNBIcon className="text-secondary" />
         </div>
       </div>
