@@ -5,6 +5,7 @@ import { ReferralSection } from '../ReferralsSection';
 import { InformationSection } from '@/components/InformationSection';
 import { ProgressTable } from '@/components/ProgressTable';
 import { PurchasedTablesSection } from '@/components/PurchasedTablesSection';
+import RiskCautionModal from '../Modals/RiskCautionModal';
 
 const Pool = () => {
   return (

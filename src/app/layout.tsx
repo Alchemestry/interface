@@ -7,6 +7,7 @@ import React from 'react';
 import { LayoutClient } from '@/components/LayoutClient';
 import { Sidebar } from '@/components/Sidebar';
 import { albertText, montserrat, arimo } from '@/utils/fonts';
+import RiskCautionModal from '@/components/Modals/RiskCautionModal';
 
 export const metadata: Metadata = {
   title: `Alchemestry ${process.env.NEXT_PUBLIC_TITLE_POSTFIX}`,
@@ -25,9 +26,10 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
             arimo.variable,
             'flex h-full min-h-full w-full flex-col font-montserrat text-primary md:flex-row',
           )}
-        >
+          >
           <Sidebar />
           <LayoutClient>{children}</LayoutClient>
+          <RiskCautionModal/>
         </div>
       </body>
     </html>
