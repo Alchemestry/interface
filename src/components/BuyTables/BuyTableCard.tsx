@@ -4,8 +4,9 @@ import Image from 'next/image';
 import React, { useState } from 'react';
 import type { FC } from 'react';
 
-import { BNBIcon } from '../icons/BNBIcon';
 import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
+
+import { BNBIcon } from '../icons/BNBIcon';
 
 interface BuyTableCardProps {
   levelMark: string;
