@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import type { FC } from 'react';
 
 import { BNBIcon } from '../icons/BNBIcon';
+import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
 
 interface BuyTableCardProps {
   levelMark: string;
@@ -23,6 +24,8 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
 }) => {
   const [tableSelectionAmount, setTableSelectionAmount] =
     useState<number>(minTableAmount);
+
+  const [isShowTableBuyConfirm, handleShowTableBuyConfirm] = useState(false);
 
   const decrementTableSelectionAmount = () =>
     tableSelectionAmount <= minTableAmount
@@ -51,8 +54,8 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             <Image src={image} alt={levelMark} width={228} />
           </div>
           <div
-            className="flex h-[89px] items-center justify-center text-5xl hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark"
-            onClick={() => alert('What do you want Bro ?')}
+            className="flex h-[89px] transform items-center justify-center text-5xl transition duration-150 ease-out hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark active:scale-90"
+            onClick={() => handleShowTableBuyConfirm(!isShowTableBuyConfirm)}
           >
             BUY
           </div>
@@ -73,7 +76,10 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
                   onClick={() =>
                     setTableSelectionAmount(decrementTableSelectionAmount)
                   }
-                  className={isTableAllowAmount(minTableAmount)}
+                  className={
+                    isTableAllowAmount(minTableAmount) ||
+                    'transform transition duration-75 ease-in-out active:scale-[2]'
+                  }
                 >
                   -
                 </button>
@@ -84,7 +90,10 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
                   onClick={() =>
                     setTableSelectionAmount(incrementTableSelectionAmount)
                   }
-                  className={isTableAllowAmount(maxTableAmount)}
+                  className={
+                    isTableAllowAmount(maxTableAmount) ||
+                    'transform transition duration-75 ease-in-out active:scale-[2]'
+                  }
                 >
                   +
                 </button>
@@ -104,6 +113,11 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
       <div className="break-word flex h-[68px] w-[46px] flex-wrap items-center justify-center bg-[#DFB26F] text-center shadow-level-mark">
         {levelMark}
       </div>
+      {isShowTableBuyConfirm && (
+        <BuyTableConfirmationModal
+          handleCloseTableConfirm={() => handleShowTableBuyConfirm(false)}
+        />
+      )}
     </div>
   );
 };
