@@ -117,6 +117,8 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
       {isShowTableBuyConfirm && (
         <BuyTableConfirmationModal
           handleCloseTableConfirm={() => handleShowTableBuyConfirm(false)}
+          image={image}
+          amount={tableSelectionAmount}
         />
       )}
     </div>
