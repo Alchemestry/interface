@@ -7,7 +7,7 @@ const ModalBase = ({ children, className, ...props }: PropsWithChildren & HTMLAt
         <div className={clsx(
             'p-3 fixed flex w-full h-full z-50 align-center justify-center items-center bg-primary/90', 
         )} {...props}>
-            <GradientDiv className="p-1.5 max-w-[785px] max-h-[523px] w-[785px] h-[523px]" >
+            <GradientDiv className="p-[0.3125rem] max-w-[785px] max-h-[523px] w-[785px] h-[523px]" >
                 <div className={
                     clsx(
                         "w-full h-full bg-main",

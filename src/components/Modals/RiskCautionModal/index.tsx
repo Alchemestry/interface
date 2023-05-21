@@ -6,6 +6,8 @@ import { useEffect, useMemo, useState } from "react";
 import { ExclamationMarkIcon } from "@/components/icons/ExclamationMarkIcon";
 import { useRouter, usePathname } from "next/navigation";
 import { useCautionModal } from "@/hooks/modals/useCautionModal";
+import { Checkbox } from "@/components/icons/Checkbox";
+import clsx from "clsx";
 
 
 const RiskCautionModal = () => {
@@ -16,14 +18,13 @@ const RiskCautionModal = () => {
     const pathName = usePathname();
 
     const [isAlreadyRead, setIsAlreadyRead] = useState(true);
-    
-    useEffect(()=> {
+    const [isContinueActive, setIsContinueActive] = useState(false);
+
+    useEffect(() => {
         setIsAlreadyRead(Boolean(localStorage.getItem("isRiskCautionRead") ?? false));
     }, [isOpen])
 
-    const shouldOpen = useMemo(()=> pathName != '/faq' && !isAlreadyRead, [pathName, isAlreadyRead]);
-    
-    console.log(pathName, shouldOpen, pathName != '/faq', isAlreadyRead)
+    const shouldOpen = useMemo(() => pathName != '/faq' && !isAlreadyRead, [pathName, isAlreadyRead]);
 
     if (!shouldOpen) return null
 
@@ -34,10 +35,9 @@ const RiskCautionModal = () => {
     return (<>
         <ModalBase className="grid grid-rows-2 px-10">
             <div className="w-full h-full flex justify-center items-center">
-                <GradientDiv className="w-36 h-34 rounded-md rotate-45 origin-center">
+                <GradientDiv className="w-32 h-32 rounded-md rotate-45 origin-center p-0.5">
                     <div className="bg-primary w-full h-full rounded-md">
-                        <ExclamationMarkIcon size={'8rem'} className="box-border pt-4 overflow-visible -rotate-45 origin-center" />
-
+                        <ExclamationMarkIcon size={'8rem'} className="box-border pt-2 pb-4 overflow-visible -rotate-45 origin-center" />
                     </div>
                 </GradientDiv>
             </div>
@@ -51,12 +51,17 @@ const RiskCautionModal = () => {
                 </div>
 
                 <div className="font-medium underline underline-offset-4">
-                    I have read and understand that
+                    <Checkbox onChange={(val) => { setIsContinueActive(val) }} className="inline-block">
+                        <span className="ml-3.5">Yes, I know what Im doing</span>
+                    </Checkbox>
                 </div>
 
                 <div
-                    className="font-bold text-2xl border-dashed border-b-2 border-primary cursor-pointer"
-                    onClick={() => { localStorage.setItem("isRiskCautionRead", 'true');  onClose() }}
+                    className={clsx(
+                        "font-bold text-2xl border-dashed border-b-2 border-primary",
+                        isContinueActive ? 'cursor-pointer' : 'cursor-not-allowed'
+                    )}
+                    onClick={!isContinueActive ? undefined : () => { localStorage.setItem("isRiskCautionRead", 'true'); onClose() }}
                 >
                     Continue
                 </div>
