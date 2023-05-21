@@ -11,15 +11,19 @@ type BuyTableConfirmationModalType = {
   handleCloseTableConfirm: (event: React.MouseEvent<HTMLElement>) => void;
   image: StaticImageData;
   amount: number;
+  price: number;
 };
 
 export const BuyTableConfirmationModal = ({
   handleCloseTableConfirm,
   image,
   amount,
+  price,
 }: BuyTableConfirmationModalType) => {
   const [tableSelectionAmount, setTableSelectionAmount] =
     useState<number>(amount);
+
+  const [priceTable, setPriceTable] = useState<number>(amount * price);
 
   return (
     <>
@@ -66,9 +70,31 @@ export const BuyTableConfirmationModal = ({
                     </IncrementButton>
                   </div>
                 </GradientDiv>
-                <div className="ml-14">2225 BNB</div>
+                <div className="ml-14">{priceTable} BNB</div>
               </div>
-              <button onClick={handleCloseTableConfirm}>Cancel</button>
+              <div className="mt-12 text-[#FF6161]">
+                Please note that You cannot buy{' '}
+                <span className="underline decoration-solid">Level 2</span>{' '}
+                tables without any{' '}
+                <span className="underline decoration-solid">
+                  Level 1 table
+                </span>
+              </div>
+              <div>Add Level 1 table +</div>
+              <div className="mt-12 text-3xl">Total: 1.5 bnb</div>
+              <div className="mt-12 flex justify-between pb-9">
+                <div className="text-[2rem]">
+                  <button
+                    onClick={handleCloseTableConfirm}
+                    className="border-b-2 border-dashed border-primary"
+                  >
+                    Cancel
+                  </button>
+                </div>
+                <div className="rounded-3xl border-2 text-[2.625rem]">
+                  <button>Accept</button>
+                </div>
+              </div>
             </div>
           </div>
         </GradientDiv>
