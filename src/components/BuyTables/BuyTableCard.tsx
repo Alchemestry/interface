@@ -6,6 +6,8 @@ import type { FC } from 'react';
 
 import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
 
+import { DecrementButton } from '../Button/DecrementButton';
+import { IncrementButton } from '../Button/IncrementButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
 interface BuyTableCardProps {
@@ -27,16 +29,6 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
     useState<number>(minTableAmount);
 
   const [isShowTableBuyConfirm, handleShowTableBuyConfirm] = useState(false);
-
-  const decrementTableSelectionAmount = () =>
-    tableSelectionAmount <= minTableAmount
-      ? minTableAmount
-      : tableSelectionAmount - 1;
-
-  const incrementTableSelectionAmount = () =>
-    tableSelectionAmount >= maxTableAmount
-      ? maxTableAmount
-      : tableSelectionAmount + 1;
 
   const isTableAllowAmount = (amount: number) =>
     tableSelectionAmount == amount ? 'text-secondary/40' : '';
@@ -73,31 +65,23 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
-                <button
-                  onClick={() =>
-                    setTableSelectionAmount(decrementTableSelectionAmount)
-                  }
-                  className={
-                    isTableAllowAmount(minTableAmount) ||
-                    'transform transition duration-75 ease-in-out active:scale-[2]'
-                  }
+                <DecrementButton
+                  captureValue={tableSelectionAmount}
+                  onStateAction={setTableSelectionAmount}
+                  rockBottom={minTableAmount}
                 >
                   -
-                </button>
+                </DecrementButton>
               </div>
               <div className="text-secondary/100">{tableSelectionAmount}</div>
               <div>
-                <button
-                  onClick={() =>
-                    setTableSelectionAmount(incrementTableSelectionAmount)
-                  }
-                  className={
-                    isTableAllowAmount(maxTableAmount) ||
-                    'transform transition duration-75 ease-in-out active:scale-[2]'
-                  }
+                <IncrementButton
+                  captureValue={tableSelectionAmount}
+                  onStateAction={setTableSelectionAmount}
+                  uppermost={maxTableAmount}
                 >
                   +
-                </button>
+                </IncrementButton>
               </div>
             </div>
             <div>
