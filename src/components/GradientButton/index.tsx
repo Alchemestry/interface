@@ -12,7 +12,7 @@ export const GradientButton: FC<GradientButtonProps> = ({
   return (
     <button
       className={clsx(
-        'h-full bg-gradient-to-r from-primary to-primary-dark',
+        'h-full transform bg-gradient-to-r from-primary to-primary-dark transition duration-150 ease-out hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark active:scale-90',
         className,
       )}
       {...props}
