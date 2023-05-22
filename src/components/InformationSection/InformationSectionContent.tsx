@@ -33,7 +33,7 @@ const SingleInfoRow: React.FC<{
   return (
     <>
       <div className="flex flex-row justify-between">
-        <div className="text-2xl font-medium pr-3">{name}:</div>
+        <div className="pr-3 text-2xl font-medium">{name}:</div>
         <div className="flex flex-row content-center justify-center">
           <div className="text-xl font-medium">{value.toString()}</div>
           <div className="self-center pb-1 pl-1">

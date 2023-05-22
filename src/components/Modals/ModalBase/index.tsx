@@ -1,24 +1,29 @@
-import { GradientDiv } from "@/components/GradientDiv";
-import clsx from "clsx";
-import { HTMLAttributes, PropsWithChildren } from "react";
+import clsx from 'clsx';
+import type { HTMLAttributes, PropsWithChildren } from 'react';
 
-const ModalBase = ({ children, className, ...props }: PropsWithChildren & HTMLAttributes<HTMLDivElement>) => {
-    return (<>
-        <div className={clsx(
-            'p-3 fixed flex w-full h-full z-50 align-center justify-center items-center bg-primary/90', 
-        )} {...props}>
-            <GradientDiv className="p-[0.3125rem] max-w-[785px] max-h-[523px] w-[785px] h-[523px]" >
-                <div className={
-                    clsx(
-                        "w-full h-full bg-main",
-                        className
-                    )
-                }>
-                    {children}
-                </div>
-            </GradientDiv>
-        </div>
-    </>)
-}
+import { GradientDiv } from '@/components/GradientDiv';
+
+const ModalBase = ({
+  children,
+  className,
+  ...props
+}: PropsWithChildren & HTMLAttributes<HTMLDivElement>) => {
+  return (
+    <>
+      <div
+        className={clsx(
+          'align-center fixed z-50 flex h-full w-full items-center justify-center bg-primary/90 p-3',
+        )}
+        {...props}
+      >
+        <GradientDiv className="h-[523px] max-h-[523px] w-[785px] max-w-[785px] p-[0.3125rem]">
+          <div className={clsx('h-full w-full bg-main', className)}>
+            {children}
+          </div>
+        </GradientDiv>
+      </div>
+    </>
+  );
+};
 
 export default ModalBase;
