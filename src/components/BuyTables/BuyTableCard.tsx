@@ -8,6 +8,7 @@ import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
 
 import { DecrementButton } from '../Button/DecrementButton';
 import { IncrementButton } from '../Button/IncrementButton';
+import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
 interface BuyTableCardProps {
@@ -46,11 +47,12 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <Image src={image} alt={levelMark} width={228} />
           </div>
-          <div
-            className="flex h-[89px] transform items-center justify-center text-5xl transition duration-150 ease-out hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark active:scale-90"
-            onClick={() => handleShowTableBuyConfirm(!isShowTableBuyConfirm)}
-          >
-            BUY
+          <div className="grid h-[89px] justify-stretch text-5xl">
+            <GradientButton
+              onClick={() => handleShowTableBuyConfirm(!isShowTableBuyConfirm)}
+            >
+              Buy
+            </GradientButton>
           </div>
         </div>
         <div className="px-3 shadow-[inset_0px_2px_5px_rgba(0,0,0,0.25)]">
