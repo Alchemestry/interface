@@ -5,7 +5,7 @@ import React from 'react';
 export interface IncrementButton extends HTMLAttributes<HTMLButtonElement> {
   uppermost: number;
   captureValue: number;
-  onStateAction: React.Dispatch<React.SetStateAction<number>>;
+  onStateAction: () => void;
 }
 
 export const IncrementButton: FC<IncrementButton> = ({
@@ -16,9 +16,6 @@ export const IncrementButton: FC<IncrementButton> = ({
   onStateAction,
   ...props
 }) => {
-  const incrementAmount = () =>
-    captureValue >= uppermost ? uppermost : captureValue + 1;
-
   return (
     <button
       className={clsx(
@@ -26,7 +23,7 @@ export const IncrementButton: FC<IncrementButton> = ({
         captureValue == uppermost && 'pointer-events-none text-secondary/40',
         className,
       )}
-      onClick={() => onStateAction(incrementAmount)}
+      onClick={() => onStateAction()}
       {...props}
     >
       {children}

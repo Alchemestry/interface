@@ -1,34 +1,33 @@
-import type { StaticImageData } from 'next/image';
 import Image from 'next/image';
 import type { FC } from 'react';
 import { useMemo } from 'react';
-import { useState } from 'react';
 import React from 'react';
 
 import { DecrementButton } from '../Button/DecrementButton';
 import { IncrementButton } from '../Button/IncrementButton';
 import { GradientDiv } from '../GradientDiv';
 
-interface BuyTableConfirmationModalProps {
-  levelMark: string;
-  image: StaticImageData;
-  price: number;
-  minTableAmount: number;
-  maxTableAmount: number;
-  amount: number;
-}
+import type { ITable } from '@/hooks/useBuyTable';
+import { useBuyTable } from '@/hooks/useBuyTable';
+
+type BuyTableConfirmationModalProps = ITable;
 
 export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
   image,
-  amount,
+  levelTitle,
+  levelMark,
+  userSelectedAmount,
+  minTableAmount,
+  maxTableAmount,
   price,
 }) => {
-  const [tableSelectionAmount, setTableSelectionAmount] =
-    useState<number>(amount);
+  const setTableSelectionAmount = useBuyTable(
+    (state) => state.updateUserSelectedAmount,
+  );
 
   const priceAmount = useMemo(
-    () => (tableSelectionAmount * price).toFixed(2),
-    [tableSelectionAmount, price],
+    () => (userSelectedAmount * price).toFixed(2),
+    [userSelectedAmount, price],
   );
 
   return (
@@ -37,7 +36,7 @@ export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
         <div className="row-span-2 h-[105px] w-[105px] overflow-hidden border-2 border-primary">
           <Image src={image} alt="img-1" />
         </div>
-        <div className="ml-7 self-end font-black">Level 2 Table</div>
+        <div className="ml-7 self-end font-black">{levelTitle} Table</div>
         <div className="ml-7">
           Pool:
           <span className="underline decoration-solid">Random</span>
@@ -47,22 +46,22 @@ export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
         <div>
           <DecrementButton
             className="w-full"
-            captureValue={tableSelectionAmount}
-            onStateAction={setTableSelectionAmount}
-            rockBottom={1}
+            captureValue={userSelectedAmount}
+            onStateAction={() => setTableSelectionAmount(levelMark, 'decrease')}
+            rockBottom={minTableAmount}
           >
             -
           </DecrementButton>
         </div>
         <div className="bg-primary text-center text-primary">
-          {tableSelectionAmount}
+          {userSelectedAmount}
         </div>
         <div>
           <IncrementButton
             className="w-full"
-            captureValue={tableSelectionAmount}
-            onStateAction={setTableSelectionAmount}
-            uppermost={20}
+            captureValue={userSelectedAmount}
+            onStateAction={() => setTableSelectionAmount(levelMark, 'increase')}
+            uppermost={maxTableAmount}
           >
             +
           </IncrementButton>

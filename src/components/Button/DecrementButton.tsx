@@ -5,7 +5,7 @@ import React from 'react';
 export interface DecrementButton extends HTMLAttributes<HTMLButtonElement> {
   rockBottom: number;
   captureValue: number;
-  onStateAction: React.Dispatch<React.SetStateAction<number>>;
+  onStateAction: () => void;
 }
 
 export const DecrementButton: FC<DecrementButton> = ({
@@ -16,9 +16,6 @@ export const DecrementButton: FC<DecrementButton> = ({
   onStateAction,
   ...props
 }) => {
-  const decrementAmount = () =>
-    captureValue <= rockBottom ? rockBottom : captureValue - 1;
-
   return (
     <button
       className={clsx(
@@ -26,7 +23,7 @@ export const DecrementButton: FC<DecrementButton> = ({
         captureValue == rockBottom && 'pointer-events-none text-secondary/40',
         className,
       )}
-      onClick={() => onStateAction(decrementAmount)}
+      onClick={() => onStateAction()}
       {...props}
     >
       {children}

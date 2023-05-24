@@ -1,5 +1,4 @@
-'use client';
-import type { StaticImageData } from 'next/image';
+import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import type { FC } from 'react';
@@ -11,28 +10,26 @@ import { IncrementButton } from '../Button/IncrementButton';
 import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
-interface BuyTableCardProps {
-  levelMark: string;
-  image: StaticImageData;
-  price: number;
-  minTableAmount: number;
-  maxTableAmount: number;
-}
+import type { ITable } from '@/hooks/useBuyTable';
+import { useBuyTable } from '@/hooks/useBuyTable';
+
+type BuyTableCardProps = ITable;
 
 export const BuyTableCard: FC<BuyTableCardProps> = ({
   levelMark,
   image,
-  price,
+  userSelectedAmount,
   minTableAmount,
   maxTableAmount,
+  price,
 }) => {
-  const [tableSelectionAmount, setTableSelectionAmount] =
-    useState<number>(minTableAmount);
+  const setTableSelectionAmount = useBuyTable(
+    (state) => state.updateUserSelectedAmount,
+  );
+
+  const resetPickUpTables = useBuyTable((state) => state.resetPickUpTables);
 
   const [isShowTableBuyConfirm, handleShowTableBuyConfirm] = useState(false);
-
-  const isTableAllowAmount = (amount: number) =>
-    tableSelectionAmount == amount ? 'text-secondary/40' : '';
 
   return (
     <div className="flex select-none flex-wrap font-bold text-secondary">
@@ -59,8 +56,11 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
           <div className="flex h-[42px] items-center justify-between text-secondary/40 hover:text-secondary/100">
             <div>
               <button
-                onClick={() => setTableSelectionAmount(minTableAmount)}
-                className={isTableAllowAmount(minTableAmount)}
+                onClick={() => setTableSelectionAmount(levelMark, 'min')}
+                className={clsx(
+                  userSelectedAmount === minTableAmount &&
+                    'pointer-events-none text-secondary/40',
+                )}
               >
                 min
               </button>
@@ -68,18 +68,22 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
                 <DecrementButton
-                  captureValue={tableSelectionAmount}
-                  onStateAction={setTableSelectionAmount}
+                  captureValue={userSelectedAmount}
+                  onStateAction={() =>
+                    setTableSelectionAmount(levelMark, 'decrease')
+                  }
                   rockBottom={minTableAmount}
                 >
                   -
                 </DecrementButton>
               </div>
-              <div className="text-secondary/100">{tableSelectionAmount}</div>
+              <div className="text-secondary/100">{userSelectedAmount}</div>
               <div>
                 <IncrementButton
-                  captureValue={tableSelectionAmount}
-                  onStateAction={setTableSelectionAmount}
+                  captureValue={userSelectedAmount}
+                  onStateAction={() =>
+                    setTableSelectionAmount(levelMark, 'increase')
+                  }
                   uppermost={maxTableAmount}
                 >
                   +
@@ -88,8 +92,11 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <div>
               <button
-                onClick={() => setTableSelectionAmount(maxTableAmount)}
-                className={isTableAllowAmount(maxTableAmount)}
+                onClick={() => setTableSelectionAmount(levelMark, 'max')}
+                className={clsx(
+                  userSelectedAmount === maxTableAmount &&
+                    'pointer-events-none text-secondary/40',
+                )}
               >
                 max
               </button>
@@ -102,10 +109,11 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
       </div>
       {isShowTableBuyConfirm && (
         <BuyTableConfirmationModal
-          handleCloseTableConfirm={() => handleShowTableBuyConfirm(false)}
-          image={image}
-          amount={tableSelectionAmount}
-          price={price}
+          handleCloseTableConfirm={() => {
+            resetPickUpTables();
+            handleShowTableBuyConfirm(false);
+          }}
+          levelMark={levelMark}
         />
       )}
     </div>
