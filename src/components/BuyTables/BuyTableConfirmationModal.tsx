@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
@@ -19,33 +19,16 @@ export const BuyTableConfirmationModal = ({
 }: BuyTableConfirmationModalType) => {
   const chosenTable = useBuyTable((state) => state.pickUpTable);
   const userHasTableLvl1 = useBuyTable((state) => state.userHasLvl1Table);
-  const userHasTableLvl1AndLvl2 = useBuyTable(
-    (state) => state.userHasLvl1AndLvl2Table,
-  );
+  const userHasTableLvl2 = useBuyTable((state) => state.userHasLvl2Table);
 
   const totalAmount = useBuyTable((state) => state.getTotalPrice);
 
-  const [level1Btn, setLevel1Btn] = useState<boolean>(false);
-  const [level2Btn, setLevel2Btn] = useState<boolean>(false);
-
-  const level1Invisible = level1Btn ? (
+  const level1Invisible = (
     <BuyTableConfirmationItem {...chosenTable('lvl 1')} />
-  ) : (
-    <div onClick={() => setLevel1Btn(true)}>
-      <button className="border-b-2 border-dashed border-primary">
-        Add Level 1 table +
-      </button>
-    </div>
   );
 
-  const level2Invisible = level2Btn ? (
+  const level2Invisible = (
     <BuyTableConfirmationItem {...chosenTable('lvl 2')} />
-  ) : (
-    <div onClick={() => setLevel2Btn(true)}>
-      <button className="border-b-2 border-dashed border-primary">
-        Add Level 2 table +
-      </button>
-    </div>
   );
 
   return (
@@ -56,23 +39,23 @@ export const BuyTableConfirmationModal = ({
             <div className="pt-9">
               <Title>Order confirmation</Title>
             </div>
-            <div className="ml-9 mt-9">
+            <div className="ml-9 mt-6">
               <BuyTableConfirmationItem {...chosenTable(levelMark)} />
               {levelMark === 'lvl 2' && !userHasTableLvl1() && (
                 <>
-                  <div className="mt-12 text-[#FF6161]">
+                  <div className="mt-6 text-[#FF6161]">
                     Please note that You cannot buy{' '}
                     <span className="underline decoration-solid">Level 2</span>{' '}
                     tables without any a{' '}
                     <span className="underline decoration-solid">Level 1</span>{' '}
                     table
                   </div>
-                  {level1Invisible}
+                  <div className="mt-6">{level1Invisible}</div>
                 </>
               )}
-              {levelMark === 'lvl 3' && !userHasTableLvl1AndLvl2() && (
+              {levelMark === 'lvl 3' && (
                 <>
-                  <div className="mt-12 text-[#FF6161]">
+                  <div className="mt-6 text-[#FF6161]">
                     Please note that You cannot buy{' '}
                     <span className="underline decoration-solid">Level 3</span>{' '}
                     tables without any a{' '}
@@ -81,16 +64,24 @@ export const BuyTableConfirmationModal = ({
                     <span className="underline decoration-solid">Level 2</span>{' '}
                     tables
                   </div>
-                  {level1Invisible}
-                  {level2Invisible}
+                  {userHasTableLvl1() ? (
+                    ''
+                  ) : (
+                    <div className="mt-6">{level1Invisible}</div>
+                  )}
+                  {userHasTableLvl2() ? (
+                    ''
+                  ) : (
+                    <div className="mt-6">{level2Invisible}</div>
+                  )}
                 </>
               )}
-              <div className="mt-12 flex text-3xl">
+              <div className="mt-8 flex text-3xl">
                 <div>Total:</div>
                 <div className="ml-5 min-w-[5rem]">{totalAmount()}</div>
                 <div className="ml-1.5">BNB</div>
               </div>
-              <div className="mt-12 flex justify-between pb-9">
+              <div className="mt-8 flex justify-between pb-9">
                 <div className="text-[2rem]">
                   <button
                     onClick={handleCloseTableConfirm}

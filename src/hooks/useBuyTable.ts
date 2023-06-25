@@ -26,7 +26,7 @@ export interface ITables {
   pickUpTable: (levelMark: string) => ITable;
   resetPickUpTables: () => void;
   userHasLvl1Table: () => boolean;
-  userHasLvl1AndLvl2Table: () => boolean;
+  userHasLvl2Table: () => boolean;
   getTotalPrice: () => number;
 }
 
@@ -116,12 +116,13 @@ export const useBuyTable = create<ITables>((set, get) => ({
       ? true
       : false;
   },
-  userHasLvl1AndLvl2Table: () => {
-    return get()
-      .buyTables.filter(
-        (table) => table.levelMark === 'lvl 1' || table.levelMark === 'lvl 2',
-      )
-      .every((t) => t.userBoughtTableQuantity > 0);
+  userHasLvl2Table: () => {
+    const userLvl2Table = get().buyTables.find(
+      (table) => table.levelMark === 'lvl 2',
+    );
+    return userLvl2Table && userLvl2Table.userBoughtTableQuantity > 0
+      ? true
+      : false;
   },
   getTotalPrice: () => {
     return +get()
