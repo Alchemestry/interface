@@ -23,14 +23,6 @@ export const BuyTableConfirmationModal = ({
 
   const totalAmount = useBuyTable((state) => state.getTotalPrice);
 
-  const level1Invisible = (
-    <BuyTableConfirmationItem {...chosenTable('lvl 1')} />
-  );
-
-  const level2Invisible = (
-    <BuyTableConfirmationItem {...chosenTable('lvl 2')} />
-  );
-
   return (
     <>
       <div className="fixed inset-0 z-20 flex items-center justify-center overflow-y-auto overflow-x-hidden text-primary">
@@ -50,7 +42,9 @@ export const BuyTableConfirmationModal = ({
                     <span className="underline decoration-solid">Level 1</span>{' '}
                     table
                   </div>
-                  <div className="mt-6">{level1Invisible}</div>
+                  <div className="mt-6">
+                    <BuyTableConfirmationItem {...chosenTable('lvl 1')} />
+                  </div>
                 </>
               )}
               {levelMark === 'lvl 3' && (
@@ -67,12 +61,16 @@ export const BuyTableConfirmationModal = ({
                   {userHasTableLvl1() ? (
                     ''
                   ) : (
-                    <div className="mt-6">{level1Invisible}</div>
+                    <div className="mt-6">
+                      <BuyTableConfirmationItem {...chosenTable('lvl 1')} />
+                    </div>
                   )}
                   {userHasTableLvl2() ? (
                     ''
                   ) : (
-                    <div className="mt-6">{level2Invisible}</div>
+                    <div className="mt-6">
+                      <BuyTableConfirmationItem {...chosenTable('lvl 2')} />
+                    </div>
                   )}
                 </>
               )}
