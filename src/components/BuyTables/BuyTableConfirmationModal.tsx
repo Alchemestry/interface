@@ -1,4 +1,5 @@
 import React from 'react';
+import { shallow } from 'zustand/shallow';
 
 import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
@@ -18,8 +19,14 @@ export const BuyTableConfirmationModal = ({
   levelMark,
 }: BuyTableConfirmationModalType) => {
   const chosenTable = useBuyTable((state) => state.pickUpTable);
-  const userHasTableLvl1 = useBuyTable((state) => state.userHasLvl1Table);
-  const userHasTableLvl2 = useBuyTable((state) => state.userHasLvl2Table);
+  const userHasTableLvl1 = useBuyTable(
+    (state) => state.userHasLvl1Table,
+    shallow,
+  );
+  const userHasTableLvl2 = useBuyTable(
+    (state) => state.userHasLvl2Table,
+    shallow,
+  );
 
   const totalAmount = useBuyTable((state) => state.getTotalPrice);
 
@@ -58,16 +65,12 @@ export const BuyTableConfirmationModal = ({
                     <span className="underline decoration-solid">Level 2</span>{' '}
                     tables
                   </div>
-                  {userHasTableLvl1() ? (
-                    ''
-                  ) : (
+                  {!userHasTableLvl1() && (
                     <div className="mt-6">
                       <BuyTableConfirmationItem {...chosenTable('lvl 1')} />
                     </div>
                   )}
-                  {userHasTableLvl2() ? (
-                    ''
-                  ) : (
+                  {!userHasTableLvl2() && (
                     <div className="mt-6">
                       <BuyTableConfirmationItem {...chosenTable('lvl 2')} />
                     </div>
