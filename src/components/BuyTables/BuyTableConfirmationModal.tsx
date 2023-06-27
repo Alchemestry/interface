@@ -5,7 +5,7 @@ import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
-import { BaseModal } from '../Modal';
+import { BaseModal } from '../Modals';
 import { Title } from '../Title';
 
 import { useBuyTable } from '@/hooks/useBuyTable';
