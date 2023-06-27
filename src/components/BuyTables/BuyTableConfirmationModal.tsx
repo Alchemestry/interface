@@ -5,16 +5,19 @@ import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
+import { BaseModal } from '../Modal';
 import { Title } from '../Title';
 
 import { useBuyTable } from '@/hooks/useBuyTable';
 
 type BuyTableConfirmationModalType = {
+  isShowTableBuyConfirm: boolean;
   handleCloseTableConfirm: (event: React.MouseEvent<HTMLElement>) => void;
   levelMark: string;
 };
 
 export const BuyTableConfirmationModal = ({
+  isShowTableBuyConfirm,
   handleCloseTableConfirm,
   levelMark,
 }: BuyTableConfirmationModalType) => {
@@ -30,9 +33,14 @@ export const BuyTableConfirmationModal = ({
 
   const totalAmount = useBuyTable((state) => state.getTotalPrice);
 
+  const resetPickUpTables = useBuyTable((state) => state.resetPickUpTables);
+
   return (
     <>
-      <div className="fixed inset-0 z-20 flex items-center justify-center overflow-y-auto overflow-x-hidden text-primary">
+      <BaseModal
+        isOpen={isShowTableBuyConfirm}
+        onAfterClose={resetPickUpTables}
+      >
         <GradientDiv>
           <div className="bg-primary pl-9 pr-20">
             <div className="pt-9">
@@ -42,7 +50,7 @@ export const BuyTableConfirmationModal = ({
               <BuyTableConfirmationItem {...chosenTable(levelMark)} />
               {levelMark === 'lvl 2' && !userHasTableLvl1() && (
                 <>
-                  <div className="mt-6 text-[#FF6161]">
+                  <div className="mt-6 text-base text-[#FF6161]">
                     Please note that You cannot buy{' '}
                     <span className="underline decoration-solid">Level 2</span>{' '}
                     tables without any a{' '}
@@ -100,8 +108,7 @@ export const BuyTableConfirmationModal = ({
             </div>
           </div>
         </GradientDiv>
-      </div>
-      <div className="fixed inset-0 z-10 bg-primary/50"></div>
+      </BaseModal>
     </>
   );
 };

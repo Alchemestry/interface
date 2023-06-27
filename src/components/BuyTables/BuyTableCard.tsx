@@ -27,8 +27,6 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
     (state) => state.updateUserSelectedAmount,
   );
 
-  const resetPickUpTables = useBuyTable((state) => state.resetPickUpTables);
-
   const [isShowTableBuyConfirm, handleShowTableBuyConfirm] = useState(false);
 
   return (
@@ -107,15 +105,15 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
       <div className="break-word flex h-[68px] w-[46px] flex-wrap items-center justify-center bg-[#DFB26F] text-center shadow-level-mark">
         {levelMark}
       </div>
-      {isShowTableBuyConfirm && (
+      {isShowTableBuyConfirm ? (
         <BuyTableConfirmationModal
+          isShowTableBuyConfirm={isShowTableBuyConfirm}
           handleCloseTableConfirm={() => {
-            resetPickUpTables();
             handleShowTableBuyConfirm(false);
           }}
           levelMark={levelMark}
         />
-      )}
+      ) : null}
     </div>
   );
 };
