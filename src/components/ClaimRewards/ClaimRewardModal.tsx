@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { CancelButton } from '../Button/CancelButton';
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
 import { BaseModal } from '../Modals';
@@ -43,12 +44,7 @@ export const ClaimRewardModal = () => {
                 </div>
                 <div className="mb-9 mt-12 flex justify-between">
                   <div className="self-center text-2xl">
-                    <button
-                      onClick={onClose}
-                      className="border-b-2 border-dashed border-primary"
-                    >
-                      Cancel
-                    </button>
+                    <CancelButton onClick={onClose} />
                   </div>
                   <div className=" text-[2.625rem]">
                     <GradientButton className="min-w-[210px] rounded-full text-secondary">
@@ -65,12 +61,7 @@ export const ClaimRewardModal = () => {
                   Come back later
                 </div>
                 <div className="pb-14 text-center text-2xl">
-                  <button
-                    onClick={onClose}
-                    className="border-b-2 border-dashed border-primary"
-                  >
-                    Cancel
-                  </button>
+                  <CancelButton onClick={onClose} />
                 </div>
               </>
             )}

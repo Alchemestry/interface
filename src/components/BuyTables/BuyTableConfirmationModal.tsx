@@ -3,6 +3,7 @@ import { shallow } from 'zustand/shallow';
 
 import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
+import { CancelButton } from '../Button/CancelButton';
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
 import { BaseModal } from '../Modals';
@@ -92,12 +93,7 @@ export const BuyTableConfirmationModal = ({
               </div>
               <div className="mt-8 flex justify-between pb-9">
                 <div className="text-[2rem]">
-                  <button
-                    onClick={handleCloseTableConfirm}
-                    className="border-b-2 border-dashed border-primary"
-                  >
-                    Cancel
-                  </button>
+                  <CancelButton onClick={handleCloseTableConfirm} />
                 </div>
                 <div className="text-[2.625rem]">
                   <GradientButton className="min-w-[200px] rounded-full text-secondary">
