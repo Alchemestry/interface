@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { ClaimRewardModalItem } from './ClaimRewardModalItem';
+
 import { CancelButton } from '../Button/CancelButton';
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
@@ -14,15 +16,16 @@ export const ClaimRewardModal = () => {
 
   const userHasReward = true;
 
-  const Row = (row1: string, row2: string, row3: string) => {
-    return (
-      <div className="mb-5 flex text-2xl md:w-[605px]">
-        <div className="basis-2/4">{row1}</div>
-        <div className="basis-2/5 text-end">{row2}</div>
-        <div className="ml-2.5">{row3}</div>
-      </div>
-    );
-  };
+  const reward = [
+    { type: 'Referrals', amount: 4 },
+    { type: 'Random Pool wins', amount: 100000 },
+    { type: 'Queue Pool wins', amount: 2342 },
+  ];
+
+  const totalReward = reward.reduce(
+    (prevValue, { amount }) => prevValue + amount,
+    0,
+  );
 
   return (
     <>
@@ -34,12 +37,16 @@ export const ClaimRewardModal = () => {
             </div>
             {userHasReward ? (
               <div className="ml-9 mt-6 grid">
-                {Row('Referrals', '4', 'BNB')}
-                {Row('Random Pool wins', '100000', 'BNB')}
-                {Row('Queue Pool wins', '234', 'BNB')}
+                {reward.map(({ type, amount }, index) => (
+                  <ClaimRewardModalItem
+                    key={index}
+                    Title={type}
+                    Amount={amount}
+                  />
+                ))}
                 <div className="mt-7 flex text-3xl">
                   <div>Total:</div>
-                  <div className="ml-5 min-w-[5rem]">132310</div>
+                  <div className="ml-5 min-w-[5rem]">{totalReward}</div>
                   <div className="ml-1.5">BNB</div>
                 </div>
                 <div className="mb-9 mt-12 flex justify-between">
