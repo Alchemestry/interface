@@ -8,6 +8,8 @@ import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 import { SwitchIcon } from '../icons/SwitchIcon';
 
+import type { Decimal } from '@/utils/Decimal';
+
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
   poolInfo: PoolInformationData;
@@ -20,14 +22,14 @@ enum InformationDisplayType {
 }
 
 interface PoolInformationData {
-  tables: number;
-  spents: number;
-  income: number;
+  tables: Decimal;
+  spents: Decimal;
+  income: Decimal;
 }
 
 const SingleInfoRow: React.FC<{
   name: string;
-  value: string | number;
+  value: string | number | Decimal;
   icon?: IconType;
 }> = ({ name, value, icon: Icon }) => {
   return (
@@ -52,11 +54,11 @@ const SwitchButton: React.FC<{
   return (
     <GradientButton
       onClick={onClick}
-      className="max-h-[52px] max-w-[22px] p-[0.6rem]"
+      className="max-h-[52px] min-w-[222px] p-[0.6rem]"
     >
       <div className="flex flex-row">
         <SwitchIcon className="pt-1" size={'1.7rem'} />
-        <div className="text-2xl capitalize text-secondary">{text}</div>
+        <div className="ml-4 text-2xl capitalize text-secondary">{text}</div>
       </div>
     </GradientButton>
   );
