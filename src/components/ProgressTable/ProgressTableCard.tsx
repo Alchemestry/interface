@@ -3,11 +3,13 @@ import Image from 'next/image';
 import type { FC } from 'react';
 import React from 'react';
 
+import type { Decimal } from '@/utils/Decimal';
+
 interface ProgressTableCardProps {
   title: string;
   image: StaticImageData;
-  currentAmount: number;
-  maxAmount: number;
+  currentAmount: Decimal;
+  maxAmount: Decimal;
 }
 
 export const ProgressTableCard: FC<ProgressTableCardProps> = ({
@@ -16,9 +18,10 @@ export const ProgressTableCard: FC<ProgressTableCardProps> = ({
   currentAmount,
   maxAmount,
 }) => {
-  const currentProgressInPercent = Math.round(
-    (currentAmount / maxAmount) * 100,
-  );
+  const currentProgressInPercent = currentAmount
+    .div(maxAmount)
+    .mul(100)
+    .toNumber();
 
   return (
     <div className="grid grid-flow-col grid-rows-3 font-bold">
@@ -38,7 +41,7 @@ export const ProgressTableCard: FC<ProgressTableCardProps> = ({
       </div>
       <div className="ml-4 self-end">
         <div className="text-base">
-          {currentAmount} out of {maxAmount}
+          {currentAmount.toString()} out of {maxAmount.toString()}
         </div>
       </div>
     </div>

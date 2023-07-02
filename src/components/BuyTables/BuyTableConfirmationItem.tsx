@@ -26,7 +26,7 @@ export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
   );
 
   const priceAmount = useMemo(
-    () => (userSelectedAmount * price).toFixed(2),
+    () => userSelectedAmount.mul(price).toNumber().toFixed(2),
     [userSelectedAmount, price],
   );
 
@@ -54,7 +54,7 @@ export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
           </DecrementButton>
         </div>
         <div className="bg-primary text-center text-primary">
-          {userSelectedAmount}
+          {userSelectedAmount.toNumber()}
         </div>
         <div>
           <IncrementButton

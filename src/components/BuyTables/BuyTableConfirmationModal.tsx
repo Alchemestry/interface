@@ -88,7 +88,9 @@ export const BuyTableConfirmationModal = ({
               )}
               <div className="mt-8 flex text-3xl">
                 <div>Total:</div>
-                <div className="ml-5 min-w-[5rem]">{totalAmount()}</div>
+                <div className="ml-5 min-w-[5rem]">
+                  {totalAmount().toNumber()}
+                </div>
                 <div className="ml-1.5">BNB</div>
               </div>
               <div className="mt-8 flex justify-between pb-9">

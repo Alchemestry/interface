@@ -35,7 +35,7 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
         <div className="p-[5px]">
           <div className="relative">
             <div className="absolute bottom-8 left-1/2 flex w-10/12 -translate-x-1/2 items-center justify-center border-[3px] border-primary text-3.5xl leading-[2.438rem] text-primary">
-              <div>{price.toFixed(2)}</div>
+              <div>{price.toNumber().toFixed(2)}</div>
               <div className="ml-1.5">
                 <BNBIcon size={24} />
               </div>
@@ -75,7 +75,9 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
                   -
                 </DecrementButton>
               </div>
-              <div className="text-secondary/100">{userSelectedAmount}</div>
+              <div className="text-secondary/100">
+                {userSelectedAmount.toNumber()}
+              </div>
               <div>
                 <IncrementButton
                   captureValue={userSelectedAmount}
