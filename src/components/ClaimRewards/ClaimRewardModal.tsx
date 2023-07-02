@@ -9,6 +9,7 @@ import { BaseModal } from '../Modals';
 import { Title } from '../Title';
 
 import { useClaimReward } from '@/hooks/useClaimReward';
+import { Decimal } from '@/utils/Decimal';
 
 export const ClaimRewardModal = () => {
   const { isOpen, onClose } = useClaimReward();
@@ -17,13 +18,13 @@ export const ClaimRewardModal = () => {
   const userHasReward = true;
 
   const reward = [
-    { type: 'Referrals', amount: 4 },
-    { type: 'Random Pool wins', amount: 100000 },
-    { type: 'Queue Pool wins', amount: 2342 },
+    { type: 'Referrals', amount: Decimal.from('4') },
+    { type: 'Random Pool wins', amount: Decimal.from('100000') },
+    { type: 'Queue Pool wins', amount: Decimal.from('2342') },
   ];
 
   const totalReward = reward.reduce(
-    (prevValue, { amount }) => prevValue + amount,
+    (prevValue, { amount }) => prevValue + amount.toNumber(),
     0,
   );
 

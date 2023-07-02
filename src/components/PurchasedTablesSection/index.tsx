@@ -8,26 +8,27 @@ import { Title } from '../Title';
 import ProgressTableCardLevel1 from '@/../public/images/progress-table-card-level-1.png';
 import ProgressTableCardLevel2 from '@/../public/images/progress-table-card-level-2.png';
 import ProgressTableCardLevel3 from '@/../public/images/progress-table-card-level-3.png';
+import { Decimal } from '@/utils/Decimal';
 
 export const PurchasedTablesSection = () => {
   const progressTableCards = [
     {
       title: 'Level 1',
       image: ProgressTableCardLevel1,
-      amount: 10,
-      price: 0.15,
+      amount: Decimal.from('10'),
+      price: Decimal.from('0.15'),
     },
     {
       title: 'Level 2',
       image: ProgressTableCardLevel2,
-      amount: 15,
-      price: 0.15,
+      amount: Decimal.from('15'),
+      price: Decimal.from('0.15'),
     },
     {
       title: 'Level 3',
       image: ProgressTableCardLevel3,
-      amount: 3,
-      price: 0.15,
+      amount: Decimal.from('3'),
+      price: Decimal.from('0.15'),
     },
   ];
 

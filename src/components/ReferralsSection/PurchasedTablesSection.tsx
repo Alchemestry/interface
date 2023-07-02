@@ -5,11 +5,13 @@ import React from 'react';
 
 import { GradientDiv } from '../GradientDiv';
 
+import type { Decimal } from '@/utils/Decimal';
+
 interface PurchasedTablesCardProps {
   title: string;
   image: StaticImageData;
-  currentAmount: number;
-  price: number;
+  currentAmount: Decimal;
+  price: Decimal;
 }
 
 export const PurchasedTablesCard: FC<PurchasedTablesCardProps> = ({
@@ -22,7 +24,7 @@ export const PurchasedTablesCard: FC<PurchasedTablesCardProps> = ({
     <GradientDiv className="grid-rows-7 grid h-48 w-48 grid-flow-row auto-rows-fr justify-items-center font-bold">
       <div className="row-span-2 flex items-center px-4">
         <div className="text-2xl capitalize text-secondary before:lowercase before:content-['x']">
-          {currentAmount}
+          {currentAmount.toNumber()}
         </div>
       </div>
       <div className="relative row-span-4">
@@ -34,7 +36,7 @@ export const PurchasedTablesCard: FC<PurchasedTablesCardProps> = ({
         </div>
       </div>
       <div className="row-span-1 text-center text-xl text-secondary">
-        {price}
+        {price.toNumber()}
       </div>
     </GradientDiv>
   );
