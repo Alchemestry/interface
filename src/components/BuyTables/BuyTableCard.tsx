@@ -5,8 +5,7 @@ import type { FC } from 'react';
 
 import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
 
-import { DecrementButton } from '../Button/DecrementButton';
-import { IncrementButton } from '../Button/IncrementButton';
+import { OperationButton } from '../Button/OperationButton';
 import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
@@ -65,29 +64,29 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
-                <DecrementButton
+                <OperationButton
                   captureValue={userSelectedAmount}
                   onStateAction={() =>
                     setTableSelectionAmount(levelMark, 'decrease')
                   }
-                  rockBottom={minTableAmount}
+                  breakCaptureValue={minTableAmount}
                 >
                   -
-                </DecrementButton>
+                </OperationButton>
               </div>
               <div className="text-secondary/100">
                 {userSelectedAmount.toNumber()}
               </div>
               <div>
-                <IncrementButton
+                <OperationButton
                   captureValue={userSelectedAmount}
                   onStateAction={() =>
                     setTableSelectionAmount(levelMark, 'increase')
                   }
-                  uppermost={maxTableAmount}
+                  breakCaptureValue={maxTableAmount}
                 >
                   +
-                </IncrementButton>
+                </OperationButton>
               </div>
             </div>
             <div>

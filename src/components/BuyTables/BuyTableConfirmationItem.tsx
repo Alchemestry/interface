@@ -3,8 +3,7 @@ import type { FC } from 'react';
 import { useMemo } from 'react';
 import React from 'react';
 
-import { DecrementButton } from '../Button/DecrementButton';
-import { IncrementButton } from '../Button/IncrementButton';
+import { OperationButton } from '../Button/OperationButton';
 import { GradientDiv } from '../GradientDiv';
 
 import type { ITable } from '@/hooks/useBuyTable';
@@ -44,27 +43,27 @@ export const BuyTableConfirmationItem: FC<BuyTableConfirmationModalProps> = ({
       </div>
       <GradientDiv className="ml-24 grid h-[36px] w-[120px] grid-cols-3 bg-secondary p-[2px] text-center text-secondary">
         <div>
-          <DecrementButton
+          <OperationButton
             className="w-full"
             captureValue={userSelectedAmount}
             onStateAction={() => setTableSelectionAmount(levelMark, 'decrease')}
-            rockBottom={minTableAmount}
+            breakCaptureValue={minTableAmount}
           >
             -
-          </DecrementButton>
+          </OperationButton>
         </div>
         <div className="bg-primary text-center text-primary">
           {userSelectedAmount.toNumber()}
         </div>
         <div>
-          <IncrementButton
+          <OperationButton
             className="w-full"
             captureValue={userSelectedAmount}
             onStateAction={() => setTableSelectionAmount(levelMark, 'increase')}
-            uppermost={maxTableAmount}
+            breakCaptureValue={maxTableAmount}
           >
             +
-          </IncrementButton>
+          </OperationButton>
         </div>
       </GradientDiv>
       <div className="ml-14 min-w-[4rem]">{priceAmount}</div>
