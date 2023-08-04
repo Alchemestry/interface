@@ -33,7 +33,7 @@ const SingleInfoRow: React.FC<{
   return (
     <>
       <div className="flex flex-row justify-between">
-        <div className="text-2xl font-medium">{name}:</div>
+        <div className="pr-3 text-2xl font-medium">{name}:</div>
         <div className="flex flex-row content-center justify-center">
           <div className="text-xl font-medium">{value.toString()}</div>
           <div className="self-center pb-1 pl-1">
@@ -52,7 +52,7 @@ const SwitchButton: React.FC<{
   return (
     <GradientButton
       onClick={onClick}
-      className="max-h-[52px] max-w-[22px] p-[0.6rem]"
+      className="max-h-[5rem] max-w-[12rem] p-[0.6rem]"
     >
       <div className="flex flex-row">
         <SwitchIcon className="pt-1" size={'1.7rem'} />
@@ -84,7 +84,7 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({
           <div className="mb-7 mt-12">
             <div className="text-2xl capitalize">
               {currentDisplayType === InformationDisplayType.GENERAL
-                ? 'General'
+                ? 'Total'
                 : 'Current Pool'}
             </div>
           </div>
@@ -108,7 +108,7 @@ export const InformationSectionContent: FC<InformationSectionContentProps> = ({
       </div>
       <div className="justify-self-end pt-6">
         <SwitchButton
-          text={isPoolType(currentDisplayType) ? 'General Info' : 'Pool Info'}
+          text={isPoolType(currentDisplayType) ? 'Total' : 'Current'}
           onClick={() => {
             setCurrentDisplayType(
               isPoolType(currentDisplayType)

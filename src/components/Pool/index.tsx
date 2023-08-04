@@ -1,5 +1,6 @@
 import React from 'react';
 
+import RiskCautionModal from '../Modals/RiskCautionModal';
 import { BuyTables } from '../BuyTables';
 import { ReferralSection } from '../ReferralsSection';
 
