@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 
 import type { InformationSectionContentProps } from './InformationSectionContent';
@@ -11,14 +12,14 @@ import { Decimal } from '@/utils/Decimal';
 export const InformationSection = () => {
   const informationSectionProps = {
     generalInfo: {
-      tables: 33,
-      income: Decimal.from('134').toNumber(),
-      spents: Decimal.from('456.4').toNumber(),
+      tables: Decimal.from('33'),
+      income: Decimal.from('134'),
+      spents: Decimal.from('456.4'),
     },
     poolInfo: {
-      tables: 2,
-      income: Decimal.from('1').toNumber(),
-      spents: Decimal.from('4').toNumber(),
+      tables: Decimal.from('2'),
+      income: Decimal.from('1'),
+      spents: Decimal.from('4'),
     },
   } as InformationSectionContentProps;
 

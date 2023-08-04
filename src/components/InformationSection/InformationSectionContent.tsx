@@ -8,6 +8,8 @@ import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 import { SwitchIcon } from '../icons/SwitchIcon';
 
+import type { Decimal } from '@/utils/Decimal';
+
 export interface InformationSectionContentProps {
   generalInfo: PoolInformationData;
   poolInfo: PoolInformationData;
@@ -20,14 +22,14 @@ enum InformationDisplayType {
 }
 
 interface PoolInformationData {
-  tables: number;
-  spents: number;
-  income: number;
+  tables: Decimal;
+  spents: Decimal;
+  income: Decimal;
 }
 
 const SingleInfoRow: React.FC<{
   name: string;
-  value: string | number;
+  value: string | number | Decimal;
   icon?: IconType;
 }> = ({ name, value, icon: Icon }) => {
   return (

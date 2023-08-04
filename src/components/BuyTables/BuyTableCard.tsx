@@ -5,8 +5,7 @@ import type { FC } from 'react';
 
 import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
 
-import { DecrementButton } from '../Button/DecrementButton';
-import { IncrementButton } from '../Button/IncrementButton';
+import { OperationButton } from '../Button/OperationButton';
 import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
@@ -35,7 +34,7 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
         <div className="p-[5px]">
           <div className="relative">
             <div className="absolute bottom-8 left-1/2 flex w-10/12 -translate-x-1/2 items-center justify-center border-[3px] border-primary text-3.5xl leading-[2.438rem] text-primary">
-              <div>{price.toFixed(2)}</div>
+              <div>{price.toNumber().toFixed(2)}</div>
               <div className="ml-1.5">
                 <BNBIcon size={24} />
               </div>
@@ -65,27 +64,29 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
-                <DecrementButton
+                <OperationButton
                   captureValue={userSelectedAmount}
                   onStateAction={() =>
                     setTableSelectionAmount(levelMark, 'decrease')
                   }
-                  rockBottom={minTableAmount}
+                  breakCaptureValue={minTableAmount}
                 >
                   -
-                </DecrementButton>
+                </OperationButton>
               </div>
-              <div className="text-secondary/100">{userSelectedAmount}</div>
+              <div className="text-secondary/100">
+                {userSelectedAmount.toNumber()}
+              </div>
               <div>
-                <IncrementButton
+                <OperationButton
                   captureValue={userSelectedAmount}
                   onStateAction={() =>
                     setTableSelectionAmount(levelMark, 'increase')
                   }
-                  uppermost={maxTableAmount}
+                  breakCaptureValue={maxTableAmount}
                 >
                   +
-                </IncrementButton>
+                </OperationButton>
               </div>
             </div>
             <div>

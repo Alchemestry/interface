@@ -3,9 +3,10 @@ import { shallow } from 'zustand/shallow';
 
 import { BuyTableConfirmationItem } from './BuyTableConfirmationItem';
 
+import { CancelButton } from '../Button/CancelButton';
 import { GradientButton } from '../GradientButton';
 import { GradientDiv } from '../GradientDiv';
-import { BaseModal } from '../Modal';
+import { BaseModal } from '../Modals';
 import { Title } from '../Title';
 
 import { useBuyTable } from '@/hooks/useBuyTable';
@@ -87,17 +88,14 @@ export const BuyTableConfirmationModal = ({
               )}
               <div className="mt-8 flex text-3xl">
                 <div>Total:</div>
-                <div className="ml-5 min-w-[5rem]">{totalAmount()}</div>
+                <div className="ml-5 min-w-[5rem]">
+                  {totalAmount().toNumber()}
+                </div>
                 <div className="ml-1.5">BNB</div>
               </div>
               <div className="mt-8 flex justify-between pb-9">
                 <div className="text-[2rem]">
-                  <button
-                    onClick={handleCloseTableConfirm}
-                    className="border-b-2 border-dashed border-primary"
-                  >
-                    Cancel
-                  </button>
+                  <CancelButton onClick={handleCloseTableConfirm} />
                 </div>
                 <div className="text-[2.625rem]">
                   <GradientButton className="min-w-[200px] rounded-full text-secondary">
