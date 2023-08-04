@@ -1,8 +1,8 @@
 import React from 'react';
 
-import RiskCautionModal from '../Modals/RiskCautionModal';
 import { BuyTables } from '../BuyTables';
 import ClaimRewards from '../ClaimRewards';
+import RiskCautionModal from '../Modals/RiskCautionModal';
 import { ReferralSection } from '../ReferralsSection';
 
 import { InformationSection } from '@/components/InformationSection';
