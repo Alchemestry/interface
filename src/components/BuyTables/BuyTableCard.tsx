@@ -1,41 +1,33 @@
-'use client';
-import type { StaticImageData } from 'next/image';
+import clsx from 'clsx';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import type { FC } from 'react';
 
+import { BuyTableConfirmationModal } from './BuyTableConfirmationModal';
+
+import { DecrementButton } from '../Button/DecrementButton';
+import { IncrementButton } from '../Button/IncrementButton';
+import { GradientButton } from '../GradientButton';
 import { BNBIcon } from '../icons/BNBIcon';
 
-interface BuyTableCardProps {
-  levelMark: string;
-  image: StaticImageData;
-  price: number;
-  minTableAmount: number;
-  maxTableAmount: number;
-}
+import type { ITable } from '@/hooks/useBuyTable';
+import { useBuyTable } from '@/hooks/useBuyTable';
+
+type BuyTableCardProps = ITable;
 
 export const BuyTableCard: FC<BuyTableCardProps> = ({
   levelMark,
   image,
-  price,
+  userSelectedAmount,
   minTableAmount,
   maxTableAmount,
+  price,
 }) => {
-  const [tableSelectionAmount, setTableSelectionAmount] =
-    useState<number>(minTableAmount);
+  const setTableSelectionAmount = useBuyTable(
+    (state) => state.updateUserSelectedAmount,
+  );
 
-  const decrementTableSelectionAmount = () =>
-    tableSelectionAmount <= minTableAmount
-      ? minTableAmount
-      : tableSelectionAmount - 1;
-
-  const incrementTableSelectionAmount = () =>
-    tableSelectionAmount >= maxTableAmount
-      ? maxTableAmount
-      : tableSelectionAmount + 1;
-
-  const isTableAllowAmount = (amount: number) =>
-    tableSelectionAmount == amount ? 'text-secondary/40' : '';
+  const [isShowTableBuyConfirm, handleShowTableBuyConfirm] = useState(false);
 
   return (
     <div className="flex select-none flex-wrap font-bold text-secondary">
@@ -50,50 +42,59 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
             </div>
             <Image src={image} alt={levelMark} width={228} />
           </div>
-          <div
-            className="flex h-[89px] items-center justify-center text-5xl hover:cursor-pointer hover:bg-gradient-to-l hover:from-primary hover:to-primary-dark"
-            onClick={() => alert('What do you want Bro ?')}
-          >
-            BUY
+          <div className="grid h-[89px] justify-stretch text-5xl">
+            <GradientButton
+              onClick={() => handleShowTableBuyConfirm(!isShowTableBuyConfirm)}
+            >
+              Buy
+            </GradientButton>
           </div>
         </div>
         <div className="px-3 shadow-[inset_0px_2px_5px_rgba(0,0,0,0.25)]">
           <div className="flex h-[42px] items-center justify-between text-secondary/40 hover:text-secondary/100">
             <div>
               <button
-                onClick={() => setTableSelectionAmount(minTableAmount)}
-                className={isTableAllowAmount(minTableAmount)}
+                onClick={() => setTableSelectionAmount(levelMark, 'min')}
+                className={clsx(
+                  userSelectedAmount === minTableAmount &&
+                    'pointer-events-none text-secondary/40',
+                )}
               >
                 min
               </button>
             </div>
             <div className="mx-[20px] flex flex-auto justify-around text-2xl">
               <div>
-                <button
-                  onClick={() =>
-                    setTableSelectionAmount(decrementTableSelectionAmount)
+                <DecrementButton
+                  captureValue={userSelectedAmount}
+                  onStateAction={() =>
+                    setTableSelectionAmount(levelMark, 'decrease')
                   }
-                  className={isTableAllowAmount(minTableAmount)}
+                  rockBottom={minTableAmount}
                 >
                   -
-                </button>
+                </DecrementButton>
               </div>
-              <div className="text-secondary/100">{tableSelectionAmount}</div>
+              <div className="text-secondary/100">{userSelectedAmount}</div>
               <div>
-                <button
-                  onClick={() =>
-                    setTableSelectionAmount(incrementTableSelectionAmount)
+                <IncrementButton
+                  captureValue={userSelectedAmount}
+                  onStateAction={() =>
+                    setTableSelectionAmount(levelMark, 'increase')
                   }
-                  className={isTableAllowAmount(maxTableAmount)}
+                  uppermost={maxTableAmount}
                 >
                   +
-                </button>
+                </IncrementButton>
               </div>
             </div>
             <div>
               <button
-                onClick={() => setTableSelectionAmount(maxTableAmount)}
-                className={isTableAllowAmount(maxTableAmount)}
+                onClick={() => setTableSelectionAmount(levelMark, 'max')}
+                className={clsx(
+                  userSelectedAmount === maxTableAmount &&
+                    'pointer-events-none text-secondary/40',
+                )}
               >
                 max
               </button>
@@ -104,6 +105,15 @@ export const BuyTableCard: FC<BuyTableCardProps> = ({
       <div className="break-word flex h-[68px] w-[46px] flex-wrap items-center justify-center bg-[#DFB26F] text-center shadow-level-mark">
         {levelMark}
       </div>
+      {isShowTableBuyConfirm ? (
+        <BuyTableConfirmationModal
+          isShowTableBuyConfirm={isShowTableBuyConfirm}
+          handleCloseTableConfirm={() => {
+            handleShowTableBuyConfirm(false);
+          }}
+          levelMark={levelMark}
+        />
+      ) : null}
     </div>
   );
 };

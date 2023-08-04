@@ -56,7 +56,7 @@ const SwitchButton: React.FC<{
     >
       <div className="flex flex-row">
         <SwitchIcon className="pt-1" size={'1.7rem'} />
-        <div className="text-2xl capitalize text-secondary">{text}</div>
+        <div className="ml-4 text-2xl capitalize text-secondary">{text}</div>
       </div>
     </GradientButton>
   );

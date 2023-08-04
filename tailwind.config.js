@@ -55,11 +55,11 @@ module.exports = {
         arimo: ['var(--font-arimo-text)'],
       },
       fontSize: {
-        '3.5xl': '2rem'
+        '3.5xl': '2rem',
       },
       boxShadow: {
         sidebar: '-20px 0px 80px rgba(0, 0, 0, 0.7)',
-        'level-mark': 'inset 2px 0px 5px rgba(0, 0, 0, 0.25)'
+        'level-mark': 'inset 2px 0px 5px rgba(0, 0, 0, 0.25)',
       },
     },
   },
