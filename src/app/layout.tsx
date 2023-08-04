@@ -5,6 +5,7 @@ import type { PropsWithChildren } from 'react';
 import React from 'react';
 
 import { LayoutClient } from '@/components/LayoutClient';
+import RiskCautionModal from '@/components/Modals/RiskCautionModal';
 import { Sidebar } from '@/components/Sidebar';
 import { albertText, montserrat, arimo } from '@/utils/fonts';
 
@@ -28,6 +29,7 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
         >
           <Sidebar />
           <LayoutClient>{children}</LayoutClient>
+          <RiskCautionModal />
         </div>
       </body>
     </html>
