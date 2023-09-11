@@ -14,14 +14,14 @@ export const CopyIcon: FC<CopyIconProps> = (props) => {
       viewBox="0 0 18 20"
       fill="none"
     >
-      <path d="M12 4.5V1H1V16H6.5" stroke="#0D1826" stroke-width="2" />
+      <path d="M12 4.5V1H1V16H6.5" stroke="#0D1826" strokeWidth="2" />
       <rect
         x="6"
         y="4"
         width="11"
         height="15"
         stroke="#0D1826"
-        stroke-width="2"
+        strokeWidth="2"
       />
     </IconBase>
   );

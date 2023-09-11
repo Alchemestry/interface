@@ -19,14 +19,14 @@ export const ExclamationMarkIcon = ({
       <path
         d="M2.99999 1L12 1L12 56.5L3 65.5L2.99999 1Z"
         stroke="url(#paint0_linear_0_1)"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <circle
         cx="7.5"
         cy="82.5"
         r="6.5"
         stroke="url(#paint1_linear_0_1)"
-        stroke-width="2"
+        strokeWidth="2"
       />
       <defs>
         <linearGradient
@@ -37,8 +37,8 @@ export const ExclamationMarkIcon = ({
           y2="47"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F3E4AE" />
-          <stop offset="1" stop-color="#DEB06D" />
+          <stop stopColor="#F3E4AE" />
+          <stop offset="1" stopColor="#DEB06D" />
         </linearGradient>
         <linearGradient
           id="paint1_linear_0_1"
@@ -48,8 +48,8 @@ export const ExclamationMarkIcon = ({
           y2="87"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#F3E4AE" />
-          <stop offset="1" stop-color="#DEB06D" />
+          <stop stopColor="#F3E4AE" />
+          <stop offset="1" stopColor="#DEB06D" />
         </linearGradient>
       </defs>
     </IconBase>

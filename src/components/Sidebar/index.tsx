@@ -15,10 +15,10 @@ export const Sidebar = () => {
   return (
     <aside
       className={clsx(
-        'fixed flex h-full w-full flex-col items-center justify-between bg-primary p-[40px] shadow-sidebar transition-all',
+        'z-30 h-full flex-col items-center justify-between bg-primary p-[40px] shadow-sidebar transition-all',
         {
-          'max-w-[480px]': isOpen,
-          'max-w-[110px]': !isOpen,
+          'min-w-screen flex lg:w-full lg:max-w-[480px]': isOpen,
+          'hidden lg:flex lg:max-w-[110px]': !isOpen,
         },
       )}
     >

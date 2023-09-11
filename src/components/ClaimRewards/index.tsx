@@ -12,7 +12,7 @@ const ClaimRewards = () => {
   const { isOpen, onClose, onOpen } = useClaimReward();
 
   return (
-    <div className="relative flex min-h-[4.5rem] items-center justify-around bg-[#F4E6B00D] font-bold">
+    <div className="relative flex min-h-[4.5rem] flex-col items-center justify-around gap-[10px] bg-[#F4E6B00D] p-[10px] text-center font-bold lg:flex-row">
       <div className="text-xl">
         You`ve got an unclaimed rewards from tables!
       </div>

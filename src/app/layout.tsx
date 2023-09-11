@@ -4,7 +4,7 @@ import type { Metadata } from 'next';
 import type { PropsWithChildren } from 'react';
 import React from 'react';
 
-import { LayoutClient } from '@/components/LayoutClient';
+import { Layout } from '@/components/Layout';
 import RiskCautionModal from '@/components/Modals/RiskCautionModal';
 import { Sidebar } from '@/components/Sidebar';
 import { albertText, montserrat, arimo } from '@/utils/fonts';
@@ -24,11 +24,11 @@ const RootLayout = async ({ children }: PropsWithChildren) => {
             albertText.variable,
             montserrat.variable,
             arimo.variable,
-            'flex h-full min-h-full w-full flex-col font-montserrat text-primary md:flex-row',
+            'flex h-full min-h-full w-full font-montserrat text-primary',
           )}
         >
           <Sidebar />
-          <LayoutClient>{children}</LayoutClient>
+          <Layout>{children}</Layout>
           <RiskCautionModal />
         </div>
       </body>
