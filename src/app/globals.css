@@ -5,10 +5,22 @@
 html, body {
     width: 100%;
     height: 100%;
+    min-height: 100%;
+    overflow-x: hidden;
 }
 
 html {
     --w3m-color-fg-1: #f4e6b0 !important;
     --w3m-color-bg-1: #0b1420 !important;
     --w3m-color-bg-2: #0b1420 !important;
+}
+
+
+@layer utilities {
+    .clip-navbar {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 90%, 0 100%);
+    }
+    .break-word {
+        word-spacing: 100vw;
+    }
 }
